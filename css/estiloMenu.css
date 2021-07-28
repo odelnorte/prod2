@@ -1,0 +1,116 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*Credits: CSSpplay */
+/*URL: http://www.cssplay.co.uk/menus/pro_five */
+
+.menu5 {padding:5px 0 0 1em; margin:0; list-style:none; height:40px; position:relative; background:transparent url(../imgs/pro_five_0c.gif) repeat-x left bottom; font-size:11px; }
+.menu5 li.top {float:left; height:40px; margin-right:1px;}
+.menu5 li a.topLink {display:block; float:left; height:40px; line-height:35px; color:#333; text-decoration:none; font-family:arial, verdana, sans-serif; font-weight:bold; text-align:center; padding:0 0 0 4px; cursor:pointer; background:url(../imgs/pro_five_0a.gif) no-repeat;}
+.menu5 li a.topLink b {float:left; display:block; padding:0 16px 5px 12px; background:url(../imgs/pro_five_0b.gif) no-repeat right top;}
+/*.menu5 li.current a {color:#000; background:url(pro_five_2a.gif) no-repeat;}
+.menu5 li.current a b {background:url(pro_five_2b.gif) no-repeat right top;}*/
+.menu5 li a.topLink:hover {color:#000; background: url(../imgs/pro_five_1a.gif) no-repeat;}
+.menu5 li.top:hover {position:relative}
+.menu5 li a.topLink:hover b {background:url(../imgs/pro_five_1b.gif) no-repeat right top;}
+/*.menu5 li.current a:hover {color:#000; background: url(pro_five_2a.gif) no-repeat; cursor:default;}
+.menu5 li.current a:hover b {background:url(pro_five_2b.gif) no-repeat right top;}*/
+
+/*.menu5 li ul.sm2 {display: none; text-decoration:none;}*/
+/*.menu5 li ul li a b {width: 100px;}*/
+.menu5 li:hover ul.sm2/*{display: block; position: absolute; top:35px;left: -30px;} */
+/*{display:block; left:0; top:31px; background: #fff; padding:3px; border:1px solid #3a93d2; white-space:nowrap; width:90px; height:auto; z-index:300;}*/
+{left:0; top:31px; background: #fff; padding:3px; border:1px solid #3a93d2; white-space:nowrap; width:160px; height:auto; z-index:300;}
+.menu5 li:hover ul.sm2 li/*{display:block; height:20px; position:relative; float:left; width:90px; font-weight:normal;}*/
+/*{display:block; font-size:11px; height:20px; width:90px; line-height:20px; text-indent:5px; color:#000; text-decoration:none;}*/
+{display:block; height:20px; position:relative; float:left; width:160px; font-weight:normal;}
+.menu5 li:hover ul.sm2 li a
+{display:block; font-size:11px; height:20px; width:160px; line-height:20px; text-indent:5px; color:#000; text-decoration:none;}
+.menu5 li ul.sm2 li a.fly
+{background:#fff url(../imgs/arrow.gif) 150px 7px no-repeat;}
+.menu5 li:hover ul.sm2 li a:hover 
+{background:#3a93d2; color:#fff;}
+.menu5 li:hover ul.sm2 li a.fly:hover
+{background:#3a93d2 url(../imgs/arrow_over.gif) 150px 7px no-repeat; color:#fff;}
+
+.menu5 ul, 
+.menu5 li:hover ul ul,
+.menu5 li:hover ul li:hover ul ul,
+.menu5 li:hover ul li:hover ul li:hover ul ul,
+.menu5 li:hover ul li:hover ul li:hover ul li:hover ul ul
+{position:absolute; left:-9999px; top:-9999px; width:0; height:0; margin:0; padding:0; list-style:none; }
+
+.menu5 li:hover ul li:hover ul,
+.menu5 li:hover ul li:hover ul li:hover ul,
+.menu5 li:hover ul li:hover ul li:hover ul li:hover ul,
+.menu5 li:hover ul li:hover ul li:hover ul li:hover ul li:hover ul
+{left:160px; top:-4px; background: #fff; padding:3px; border:1px solid #3a93d2; white-space:nowrap; width:160px; z-index:400; height:auto;}
+
+.menu5 li:hover ul li:hover > a.fly {background:#3a93d2 url(arrow_over.gif) 150px 7px no-repeat; color:#fff;} 
+/*.menu5 li ul li a {background: url(pro_five_0a2.gif) no-repeat; }
+.menu5 li ul li a b {background: url(pro_five_0b2.gif) no-repeat right top;}
+.menu5 li ul li a:hover b {background:url(pro_five_1b2.gif) no-repeat right top;}
+.menu5 li ul li a:hover {background: url(pro_five_1a2.gif) no-repeat; }*/
+/*.menu5 li:hover ul.sm2 li a
+{display:block; font-size:11px; height:20px; width:90px; line-height:20px; text-indent:5px; color:#000; text-decoration:none;}
+.menu5 li ul.sm2 li a.fly
+{background:#fff url(arrow.gif) 80px 7px no-repeat;}
+.menu5 li:hover ul.sm2 li a:hover 
+{background:#3a93d2; color:#fff;}
+.menu5 li:hover ul.sm2 li a.fly:hover
+{background:#3a93d2 url(arrow_over.gif) 80px 7px no-repeat; color:#fff;}
+
+.menu5 li:hover ul li:hover > a.fly {background:#3a93d2 url(arrow_over.gif) 80px 7px no-repeat; color:#fff;} */
+
+/*.menu5 li ul li {height:34px; }*/
+
+#full-screen-background-image {
+        z-index: -999;
+        width: 100%;
+        height: auto;
+        position: fixed;
+        top: 250px;
+        left: 0;
+    }
+/*#spanimgback:hover { background:url(imgs/ic_atras_azul.png)}*/
+
+.spanimgback:hover img {
+-webkit-transform:scale(1.25);
+-moz-transform:scale(1.25);
+-ms-transform:scale(1.25);
+-o-transform:scale(1.25);
+transform:scale(1.25);
+}
+.spanimgback {/*Ancho y altura son modificables al requerimiento de cada uno*/
+width:16px;
+height:16px;
+overflow:hidden;
+}
+/**************************/
+/*#nav ul, 
+#nav li:hover ul ul,
+#nav li:hover ul li:hover ul ul,
+#nav li:hover ul li:hover ul li:hover ul ul,
+#nav li:hover ul li:hover ul li:hover ul li:hover ul ul
+{position:absolute; left:-9999px; top:-9999px; width:0; height:0; margin:0; padding:0; list-style:none;}
+
+#nav li:hover ul.sub
+{left:0; top:31px; background: #fff; padding:3px; border:1px solid #3a93d2; white-space:nowrap; width:90px; height:auto; z-index:300;}
+#nav li:hover ul.sub li
+{display:block; height:20px; position:relative; float:left; width:90px; font-weight:normal;}
+#nav li:hover ul.sub li a
+{display:block; font-size:11px; height:20px; width:90px; line-height:20px; text-indent:5px; color:#000; text-decoration:none;}
+#nav li ul.sub li a.fly
+{background:#fff url(arrow.gif) 80px 7px no-repeat;}
+#nav li:hover ul.sub li a:hover 
+{background:#3a93d2; color:#fff;}
+#nav li:hover ul.sub li a.fly:hover
+{background:#3a93d2 url(arrow_over.gif) 80px 7px no-repeat; color:#fff;}
+
+#nav li:hover ul li:hover > a.fly {background:#3a93d2 url(arrow_over.gif) 80px 7px no-repeat; color:#fff;} 
+
+#nav li:hover ul li:hover ul,
+#nav li:hover ul li:hover ul li:hover ul,
+#nav li:hover ul li:hover ul li:hover ul li:hover ul,
+#nav li:hover ul li:hover ul li:hover ul li:hover ul li:hover ul
+{left:90px; top:-4px; background: #fff; padding:3px; border:1px solid #3a93d2; white-space:nowrap; width:90px; z-index:400; height:auto;}*/

@@ -1,0 +1,87 @@
+
+
+/* ###################################    Estilos CSS para MODAL GENERAL  francisco ivan 27.05.2019 */
+
+.dimensiones_modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    padding-top: 100px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    /*overflow: auto; */
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+}
+.contenido {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 25%;
+    height: 15%;
+}
+.cerrar {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.cerrar:hover,
+.cerrar:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.muestra_imagen
+{
+    height: 100vh;  
+    width: 100%; 
+    background-color: #1f1f1f85;
+    z-index: 5; 
+    display: flex;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    top:0;
+}
+
+.vista-imagen
+{
+    padding:15px
+}
+.vista-imagen > .ver-imagen{
+    cursor:pointer;
+    display: block;
+    padding-bottom: 15px;
+}
+.vista-imagen img
+{
+    width: 20%;
+    transition:  transform 0.5s;
+    -moz-transition:  -moz-transform 0.5s;
+    -webkit-transition:  -webkit-transform 0.5s;
+    -o-transition: -o-transform 0.5s;
+    
+}
+.vista-imagen > .link-ver-imagen{
+    text-decoration:none;
+    background-color: #1fa67a;
+    color: #fff;	
+    border-radius: 5px;	
+    padding: 5px;	
+    font-size: small;
+    cursor: pointer;
+}
+.vista-imagen img:hover
+{
+     width: 50%;   
+    transform : scale(2) ;
+    -moz-transform : scale(2) ;      /* Firefox */
+    -webkit-transform : scale(2) ;   /* Chrome - Safari */
+    -o-transform : scale(2) ;        /* Opera */
+   
+}

@@ -1,0 +1,423 @@
+#contenedor {   z-index:1;
+          width:auto;
+		  height:100%;
+	      margin:5px 10px 5px 10px;
+		  /*position:absolute;*/
+		  /*background-color: #33f;
+height: 100%!important;
+height: 99.6%;*/
+	    }  
+/*Imagen flechas*/
+#imgatras:link{ text-decoration:none;}			
+/*MENU*/					   
+#menu ul { list-style-type: none;
+font-size:12px;}
+#menu ul li.nivel1 { 
+float: left;
+margin-right:4px;
+}
+#menu ul li a {display: block;
+text-decoration: none;
+color:#000;
+background-color: #E2F4FE;;
+border:#09F solid 1px;
+position: relative;
+padding: 3px;
+}
+#menu ul li:hover {position: relative;}
+#menu ul li a:hover, #menu ul li:hover a.nivel1 {background-color: #A8D3FF; color:#000; position: relative;}
+#menu ul li a.nivel1 {display: block !important; display: none; position: relative;}
+
+#menu ul li ul {display: none;}
+#menu ul li ul li a {width: 115px; height: 13px; background:#FFF; border-color:#CCC;}
+#menu ul li:hover  ul.nivel2{display: block; position: absolute;left: -40px;} 
+
+#menu ul li ul li ul{display: none;}
+#menu ul li ul li ul li a {width: 115px; height: 13px; background:#FFF; border-color:#CCC;}
+#menu ul li ul li:hover ul.nivel3{display: block; position: relative;left: 82px; margin-top: -21px}
+
+#menu ul li ul li ul li ul{display: none;}
+#menu ul li ul li ul li ul li a {width: 115px; height: 13px; background:#FFF; border-color:#CCC;}
+#menu ul li ul li ul li:hover ul.nivel4{display: block; position: absolute;left: 83px; margin-top: -21px}
+
+#listaFolios td:hover,#listaBusquedaFallas td:hover,#listaBusquedaTecnicos td:hover,#divMenuVer span:hover, td.ver:hover{
+background-color: #A8D3FF;
+}
+html,body{
+margin:0px;
+height:100%;
+}
+#contenido input{font-size:10px;}
+#contenido select{font-size:10px;}
+/*MENU2*/					   
+#menu2 ul {list-style-type: none;
+font-size:12px;
+text-decoration:none;
+margin:0px;
+padding:0px;
+}
+#menu2 ul li.nivel {
+float: left;
+margin-right:4px;
+}
+#menu2 ul li a {display: block;
+text-decoration: none;
+color:#000;
+background-color: #E2F4FE;;
+border:#09F solid 1px;
+padding: 2px;
+}
+#menu2 ul li.nivel:hover a{
+color:#000;
+padding: 3px;
+}
+#menu2 li.current a {
+	background-color: #A8D3FF;
+	padding: 2px;
+	float: left;
+	margin-right:4px;
+	top:3px;
+	margin-top:3px;
+}
+.divBuscaFolios {
+width:97%;
+margin-left:10px;
+background-color:#F5F5F5;
+font-size:12px;
+}
+
+
+.gris{ color:#666;font-size:13px;}
+.divPiezasth{ background-color:#ccc;font-size:14px;}
+.divPiezastd{ background-color:#F4F4F4;font-size:13px;}
+li.nivel a span.uno{ 
+display:none;
+}
+/*/////////////////////////////////////////////////*/
+.divCalendario {position: absolute;
+background-color:#F5F5F5;
+font-size:12px;
+border:#999 solid 1px;
+}
+#origenMaq select,input{ font-size:12px;}
+#destinoMaq select,input{ font-size:12px;}
+#busquedaMaq select{ font-size:11px;}
+#busquedaMaqDes select{ font-size:11px;}
+#divBuscaSeries,#divBuscaSeriesDes {position: absolute;
+background-color:#F5F5F5;
+font-size:10px;
+border:#999 solid 1px;
+/*z-index:25;*/}
+
+/*
+
+Darko Bunic
+http://www.redips.net/
+Jan, 2010.
+
+*/
+
+body{
+	font-family: arial;
+	margin: 0px; /* for IE6 / IE7 */
+}
+
+/* drag container*/
+#drag{
+	/* make drag div visible */
+	/* border: 2px solid lime; */
+	
+	/* I had problems with FF3 and this settings for DIV id="drag" */	
+	
+	/*margin: auto;
+  	display: table;
+    table-layout: auto;*/
+    
+}
+
+/* drag objects (DIV inside table cells) */
+.drag{
+	cursor: move;
+	margin: auto;
+	z-index: 10;
+	background-color: white;
+	text-align: center;
+	font-size: 7pt; /* needed for cloned object */
+	opacity: 0.7;
+	filter: alpha(opacity=70);
+	/* without width, IE6/7 will not apply filter/opacity to the element ?! */
+	/* IE needs element layout */
+	width: 52px;
+	/* round corners */
+	border-radius: 4px; /* Opera, Chrome */
+	-moz-border-radius: 4px; /* FF */
+}
+
+#content{
+	width:1200px;
+}
+
+/* tables */
+div#drag table{
+	background-color: #eee;
+	border-collapse: collapse;
+	margin: auto;
+}
+
+/* table cells */
+div#drag td{
+	height: 15px;
+	border: 1px solid white;
+	text-align: center;
+	font-size: 7pt;
+	padding: 2px;
+}
+
+/* green objects */
+.green {
+	border: 2px solid #499B33;
+}
+
+/* orange objects */
+.orange {
+	border: 2px solid #BF6A30;
+}
+
+/* blank cells (to create gap between left column and message row) */
+.blank {
+	background-color: white;
+}
+
+/* green cell */
+.green_cell{
+	background-color: #AFD0A7;
+}
+
+/* orange cell */
+.orange_cell{
+	background-color: #DDC5B5;
+}
+
+/* orange cell */
+.gris_cell{
+	background-color: #eee;
+}
+
+
+/* message line */
+#message{
+	color: white;
+	background-color: #aaa
+}
+
+/* left column and corners in main table */
+.dark{
+	background-color: #e0e0e0;
+}
+#divReporteMaquinas{ font-size:14px;}
+#divReporteMaquinas select{ font-size:11px;}
+#divReporteMaquinas input{ font-size:11px;}
+
+.listaPiezas{ width:1000px;}
+.listaPiezas th{/*Es la tabla dentro de detalles*/
+	border-bottom:#8CB7F7 2px solid;
+	font-size:12px;}
+.listaPiezas td {
+	/*text-align:left;*/
+	font-size:11px;}
+.gris{color: #666;}
+.Parte input{ font-size:10px}
+.Parte select{ font-size:10px}
+.divBuscaSeries {position: absolute;
+background-color:#F5F5F5;
+font-size:10px;
+border:#999 solid 1px;
+max-height:250px;
+overflow:auto;}
+.azul{color:#69C}
+#listadeOS td:hover{background-color:#AAE3F4;cursor:pointer;}
+
+/*////////////////////////////////////////////////////////inicio de toltip/////////////////////////////////////////////////*/
+td.tt span{display: none;  left:130px;}   
+/*background:; ie hack*/   
+td.tt:hover{ z-index:25;} 
+td.tt:hover span.tooltip{
+    display:block; 
+     top: 80px; left:130px;
+     /*outline: double;*/
+   cursor:help;
+    width:200px;   
+    color: #993300;   
+    text-align:left;   
+	position:absolute;
+	font-size:12px;
+	}   
+td.tt:hover span.top{   
+    display: block;   
+    padding: 10px 8px 0;   
+    background: url(../imgs/bubble3.gif) no-repeat top ;   
+}   
+td.tt:hover span.middle{ /* altura del bloque variable */   
+    display: block;   
+    padding: 0 8px;   
+    background: url(../imgs/bubble_filler.gif) repeat bottom;   
+}   
+td.tt:hover span.bottom{   
+    display: block;   
+    padding:3px 8px 10px;   
+    color: #548912;   
+    background: url(../imgs/bubble.gif) no-repeat bottom;   
+}
+/*////////////////////////////////////////////////////////Fin de toltip/////////////////////////////////////////////////*/
+
+/*////////////////////////////////////////////////////ESTILOS GENERALES/////////////////////////////////////////////////////////*/
+
+.textbox
+  {
+  border: 1px solid #DBE1EB;
+  font-size: 18px;
+  font-family: Arial, Verdana;
+  padding-left: 7px;
+  padding-right: 7px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 7px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -o-border-radius: 4px;
+  background: #FFFFFF;
+  background: linear-gradient(left, #FFFFFF, #F7F9FA);
+  background: -moz-linear-gradient(left, #FFFFFF, #F7F9FA);
+  background: -webkit-linear-gradient(left, #FFFFFF, #F7F9FA);
+  background: -o-linear-gradient(left, #FFFFFF, #F7F9FA);
+  color: #2E3133;
+  }
+  
+  .textbox:focus
+  {
+  color: #2E3133;
+  border-color: #FBFFAD;
+  }
+  
+  .boton_personalizado{
+    text-decoration: none;
+    padding: 3px;
+    font-weight: 500;
+    font-size: 14px;
+    color: #660000;
+    background-color: #e6ebff;
+    border-radius: 4px;
+    border: 1px solid #0036e6;
+	cursor: pointer;
+	margin-right:4px;
+  }
+  .boton_personalizado:hover{
+    color: #660000;
+    background-color: #ffffff;
+  }
+  
+  .boton_excel{
+    text-decoration: none;
+    padding: 3px;
+    font-weight: 500;
+    font-size: 14px;
+    color: #660000;
+    background-color: #e6ebff;
+    border-radius: 4px;
+    border: 1px solid #0036e6;
+	cursor: pointer;
+	margin-right:4px;
+  }
+  .boton_personalizado:hover{
+    color: #660000;
+    background-color: #ffffff;
+  }
+  
+  .boton_personalizadoRed{
+    text-decoration: none;
+    padding: 3px;
+    font-weight: 500;
+    font-size: 14px;
+    color: #ff0000;
+    background-color: #e6ebff;
+    border-radius: 4px;
+    border: 1px solid #0036e6;
+	cursor: pointer;
+	margin-right:4px;
+  }
+  .boton_personalizadoRed:hover{
+    color: #ff0000;
+    background-color: #ffffff;
+  }
+  
+  input.text, select.text, textarea.text {
+   background: #F5F5F5;
+   border: 2px solid #393939;
+   border-radius: 5px 5px 5px 5px;
+   color: #393939;
+   font-size: 12px;
+   padding: 5px;
+}
+  textarea.text2 {
+   background: #FFF;
+   border: 2px solid #393939;
+   border-radius: 5px 5px 5px 5px;
+   color: #393939;
+   font-size: 12px;
+   padding: 5px;
+}
+input.formato, select.formato, textarea.formato {
+   background: #FFF;
+   border: 1px solid #393939;
+   border-radius: 3px;
+   color: #393939;
+   font-size: 10px;
+   padding: 2px;
+}
+
+
+.caja {
+font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif;
+color: #33331a; /*#808000*/
+font-size: 12px;
+font-weight: 400;
+/*text-align: center;*/
+background: #889ccf; /*#889ccf*/
+margin: 0 0 25px;
+overflow: hidden;
+padding: 1px;
+border-radius: 10px;
+/*-moz-border-radius: 15px*/
+/*-webkit-border-radius: 35px 0px 35px 0px;*/
+border: 1px solid #5878ca;
+}
+
+.cajaorden {
+font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif;
+color: #33331a; /*#808000*/
+font-size: 12px;
+font-weight: 400;
+/*text-align: center;*/
+background: #e6e6e6;
+margin: 0 0 25px;
+overflow: hidden;
+padding: 1px;
+border-radius: 10px;
+/*-moz-border-radius: 15px*/
+/*-webkit-border-radius: 35px 0px 35px 0px;*/
+border: 1px solid #5878ca;
+}
+
+.efecto:hover img {
+-webkit-transform:scale(1.25);
+-moz-transform:scale(1.25);
+-ms-transform:scale(1.25);
+-o-transform:scale(1.25);
+transform:scale(1.25);
+}
+/*.spanimgback {/*Ancho y altura son modificables al requerimiento de cada uno
+width:16px;
+height:16px;
+overflow:hidden;
+}*/
+/*////////////////////////////////////////////////////////////////////////////FIN ESTILOS GENERALES//////////////////////////////////////////////////////////*/

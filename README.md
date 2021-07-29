@@ -1,3 +1,3 @@
-Se excluye capera de: 
+Se excluye capeta de: 
 imgs
 php/dompdf

@@ -1,3 +1,3 @@
-Se excluye capera de: 
-imgs
-php/dompdf
+### Se excluye carpeta de: 
+- imgs
+- php/dompdf

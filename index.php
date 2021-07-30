@@ -7,7 +7,7 @@ include('php/calendario.php');
 <HTML>
 <HEAD>
 
-	<TITLE>Producci&oacute;n</TITLE>
+  <TITLE>Producci&oacute;n</TITLE>
 <link type="text/css" href="css/basicoAct.css"  rel="stylesheet"/>
 <link type="text/css" href="css/basicoModal.css?ver=<?=date("his");?>"  rel="stylesheet"/>
 <link rel="stylesheet" type="text/css" href="css/estiloMenu.css" />
@@ -37,15 +37,17 @@ include('php/calendario.php');
 
   <!--dIV contenedor, base para la posición de la página-->  
 
- <div id="dir" style="font-size:14px; font-family:Verdana, Geneva, sans-serif; color:#03F"><b>PRODUCCION</b></div>
+<div class="breadcrumbs" style="position: relative; height: 25px;"> 
+  <div id="dir" style="font-size:14px; font-family:Verdana, Geneva, sans-serif; color:#03F;margin: 5px 0 0 15px; position: absolute;"><b>PRODUCCION</b></div>
+</div>
  <br>
  <!--MENU-->
-	<div>  
+  <div>  
       <ul class="menu5">
         <li class="top" onClick="solPedidos();"><a href="#" class="topLink"><b>SOLICITUDES DE MATERIAL</b></a></li>
         <li class="top" onClick="maqIncomp();"><a href="#" class="topLink"><b>MAQ. INCOMPLETAS</b></a></li>
         <li class="top"><a href="#" class="topLink"><b>REPORTES</b></a>
-        	<ul class="sm2">
+          <ul class="sm2">
                   <li onClick="reporteMaq();"><a href="#">Historial de Maquinas</a></li>
                   <li onClick="reporteDeMaquinas();"><a href="#">Ubicacion de Maquinas</a></li>
                   <li onClick="reporteOSPR();"><a href="#">Ordenes de Servicio</a></li>
@@ -84,62 +86,62 @@ include('php/calendario.php');
 <div style=" position:absolute; margin-top:3px; right:40px;"">
  <span class="spanimgback"><img src="imgs/back.png" border="0" style="cursor:pointer;" alt="Ir a menu de m&oacute;dulos" title="Ir a menu anterior" onClick="irMenuAnterior(<?php echo $_SESSION["usuarioid"]; ?>);"></span>
  <span class="spanimgback"><img src="imgs/reload.png" style="cursor:pointer;" onClick="actualizar(<?php echo $_SESSION["usuarioid"]; ?>);"/></span>
- <span class="spanimgback"> <a	href="../auten/salir.php" ><img src="imgs/exit.png" style="cursor:pointer;" title="Cerrar Sesion" /></a>&nbsp;</span>
+ <span class="spanimgback"> <a  href="../auten/salir.php" ><img src="imgs/exit.png" style="cursor:pointer;" title="Cerrar Sesion" /></a>&nbsp;</span>
 </div>
 <br>
 <!--Muestra lista de pedidos-->
-<div id="solPedidosDiv"></div>
+<div id="solPedidosDiv" class="contDiv"></div>
 <!--FIN Muestra lista de pedidos-->
 
 <!--Muestra lista de maquinas Incompletas-->
-<div id="maqIncompletasDiv"></div>
+<div id="maqIncompletasDiv" class="contDiv"></div>
 <!--FIN Muestra lista de maquinas Incompletas-->
 
 <!--Muestra reporte de maquinas-->
-<div id="reporteMaquinasDiv"></div>
+<div id="reporteMaquinasDiv" class="contDiv"></div>
 <!--FIN Muestra reporte de maquinas-->
 <!--Muestra catalogo de piezas con fotos-->
 <div id="ReporteInventarioDiv"></div>
 <!--Fin Muestra catalogo de piezas con fotos-->
-<div id="inventarioDiv">
+<div id="inventarioDiv" class="contDiv">
 <div id="menuInventario"></div>
 <div id="busquedaInventario"></div>
 </div>
 <!--Muestra reporte de maquinas-->
-<div id="reporteDeMaquinasDiv"></div>
+<div id="reporteDeMaquinasDiv" class="contDiv"></div>
 <!--FIN Muestra reporte de maquinas-->
- <div id="devolucionesMdiv" style="display:none">
+ <div id="devolucionesMdiv" class="contDiv" style="display:none">
      <input type="button" value="Crear Devolucion" onClick="crearDevolucion('Produccion');"><br>
      <span id="spanIngresaPiDe"></span>
      </div>
 <!--Muestra reporte de Ordenes-->
-<div id="divReporteOS"></div>
+<div id="divReporteOS" class="contDiv"></div>
 <!--Fin reporte de Ordenes-->
-<div id="reportePedidosATdiv"></div>
+<div id="reportePedidosATdiv" class="contDiv"></div>
 <!--Muestra solicitud de material-->
-<div id="pedidoNuevoDiv"></div>
+<div id="pedidoNuevoDiv" class="contDiv"></div>
 <!--Fin solicitud material-->
-<div id="crearCB"></div>
+<div id="crearCB" class="contDiv"></div>
 <!--Muestra las entradas recibidas de stock-->
-<div id="entradasProDiv"></div>
+<div id="entradasProDiv" class="contDiv"></div>
 <!--FIN Muestra las entradas recibidas de stock-->
-<div id="ReporteDevolucionesdiv"></div>
+<div id="ReporteDevolucionesdiv" class="contDiv"></div>
 <!--Muestra el inventario que hay en Produccion-->
-<div id="inventarioProDiv"></div>
+<div id="inventarioProDiv" class="contDiv"></div>
 <!--FIN Muestra el inventario que hay en Produccion-->
 
 <!--Muestra las maquinas en Bodega-->
-<div id="divMaquinasBodegas"></div>
+<div id="divMaquinasBodegas" class="contDiv"></div>
 <!--Fin Maquinas bodega-->
 
 <!--Muestra maquinas y placas-->
-<div id="divMaquinasPlacas"></div>
+<div id="divMaquinasPlacas" class="contDiv"></div>
 <!--Fin maquinas placas-->
-<div id="divReporteComponete"></div>
+<div id="divReporteComponete" class="contDiv"></div>
 <!--Muestra placas-->
-<div id="divReportedePlacas"></div>
+<div id="divReportedePlacas" class="contDiv"></div>
 <!--Fin placas-->
-<div style="display:none" id="divConversionMaq">
+<div style="display:none" id="divConversionMaq" class="contDiv">
 Ingresa numero de serie o numero de OS: <input type="text" style='font-size:12px;' size='12' id='inputLicenciaConv' /> &nbsp;&nbsp;&nbsp;
 <input id='buscarConversion' style='font-size:12px; margin-top:3px' type='button' value='Buscar' onClick='traeDatosLicenciaConv(1,inputLicenciaConv.value);' >
 <br><br>
@@ -147,23 +149,23 @@ Ingresa numero de serie o numero de OS: <input type="text" style='font-size:12px
 <br><br>
 
 </div>
-<div id="divRelacionComSerieDos"></div>
-<div id="divImpCompMaq"></div>
-<div id="divReporteContratos"></div>
-<div id="GenCB"></div>
-<div id="filtraInvCod"></div>
+<div id="divRelacionComSerieDos" class="contDiv"></div>
+<div id="divImpCompMaq" class="contDiv"></div>
+<div id="divReporteContratos" class="contDiv"></div>
+<div id="GenCB" class="contDiv"></div>
+<div id="filtraInvCod" class="contDiv"></div>
 <!--Cambia contrasena-->
-<div id="cContrasenaDiv"></div>
+<div id="cContrasenaDiv" class="contDiv"></div>
 <!--FIN Cambio contrasena-->
-<div id="ordenServicioDiv" style="height:85%; font-size:11px; display:none;">
+<div id="ordenServicioDiv" class="contDiv" style="height:85%; font-size:11px; display:none;">
 <div id="buscar">
   <table>
-    	<tr>
-        	<td align="left" style="margin-right:0px;">
-            	<img src="imgs/buscar.png" />
+      <tr>
+          <td align="left" style="margin-right:0px;">
+              <img src="imgs/buscar.png" />
             </td>
             <td align="left" style="margin-right:0px; margin-left:0px">
-            	<input id='busquedaListaInput' style='font-size:9px; color:#9E9E9E; height:10px; margin-top:3px' size='10' type='text' value='Buscar' onFocus='quitaTexto(this.id);' onKeyUp="listaOrden('Produccion');"  >
+              <input id='busquedaListaInput' style='font-size:9px; color:#9E9E9E; height:10px; margin-top:3px' size='10' type='text' value='Buscar' onFocus='quitaTexto(this.id);' onKeyUp="listaOrden('Produccion');"  >
             </td>
         </tr>
     </table>
@@ -174,15 +176,52 @@ Ingresa numero de serie o numero de OS: <input type="text" style='font-size:12px
 </div>
 <!-- div de maquinas -->
 <div id="maquinasDiv" style="display:none">
-<div id="drag" style="width:100%; "><div id="origenMaq" style="width:49%; height:370px;float:left;font-size:12px; border-right:#999 solid 1px;"><strong>ORIGEN</strong><br><br>&nbsp;&nbsp;Ubicacion: <select id="selectUbicacion" onChange="traeBusqueda(this.value,1);"><option></option><option value="Bodega">Bodega</option><option value="Sala">Sala</option><option value="Nuevas">Espana</option><option value="contrato">Nuevos Contratos</option></select>&nbsp;&nbsp;<span id="busquedaMaq" style="font-size:12px;"></span><br><br>&nbsp;&nbsp;<span id="spanSeries">Serie:&nbsp;<div id='divBuscaSeries' ></div><input id="inputSerie" type="text" size="7" onKeyUp="traeSeriesMM(this.value,1);">&nbsp;&nbsp;&nbsp;&nbsp;<input id="buscarMaq1" type="button" value="Buscar" onClick="buscaMaquinas(1);"></span>
-	 <span  id="spanexportarExcel"></span>&nbsp;<div style="float:left"  id="divpedimentos"></div><span style="float:left" id="div3Pedimentos"></span>&nbsp;
-     											<div style="float:left"  id="divcontratos"></div><span style="float:left" id="div3Contratos"></span>
+<div id="drag" style="width:100%; ">
+  <div id="origenMaq" style="width:49%; height:370px;float:left;font-size:12px; border-right:#999 solid 1px;">
+    <strong>ORIGEN</strong>
+    <br><br>&nbsp;&nbsp;Ubicacion: 
+    <select id="selectUbicacion" onChange="traeBusqueda(this.value,1);">
+      <option></option>
+      <option value="Bodega">Bodega</option>
+      <option value="Sala">Sala</option>
+      <option value="Nuevas">Espana</option>
+      <option value="contrato">Nuevos Contratos</option>
+    </select>
+    &nbsp;&nbsp;<span id="busquedaMaq" style="font-size:12px;"></span>
+    <br><br>&nbsp;&nbsp;
+    <span id="spanSeries">Serie:&nbsp;
+      <div id='divBuscaSeries' ></div>
+      <input id="inputSerie" type="text" size="7" onKeyUp="traeSeriesMM(this.value,1);">&nbsp;&nbsp;&nbsp;&nbsp;
+      <input id="buscarMaq1" type="button" value="Buscar" onClick="buscaMaquinas(1);">
+    </span>
+    <span  id="spanexportarExcel"></span>&nbsp;
+    <div style="float:left"  id="divpedimentos"></div>
+    <span style="float:left" id="div3Pedimentos"></span>&nbsp;
+    <div style="float:left"  id="divcontratos"></div><span style="float:left" id="div3Contratos"></span>
      <div id="divMuestraMaquinas" style="width:99%;overflow:auto;"></div>
      </div>
-     <div id="destinoMaq" style="font-size:12px; width:50%;height:auto; padding-left:49%;">&nbsp;&nbsp;<strong>DESTINO</strong><br><br>&nbsp;&nbsp;&nbsp;&nbsp;Ubicacion: <select id="selectUbicacionDes" onChange="traeBusqueda(this.value,2);"><option></option><option value="Bodega">Bodega</option><option value="Sala">Sala</option><option value="contrato">Nuevos Contratos</option><option value="OS">Orden Servicio</option></select>&nbsp;&nbsp;<span id="busquedaMaqDes" style="font-size:12px;"></span><br><br>&nbsp;&nbsp;&nbsp;&nbsp;<!--Serie:&nbsp;&nbsp;<div id='divBuscaSeriesDes' ></div><input id="inputSerieDes" type="text" size="7" onKeyUp="traeSeriesMM(this.value,2);">--><span id="numMaq"></span>&nbsp;&nbsp;<span id="spanOfficeIDdes"></span>&nbsp;&nbsp;&nbsp;&nbsp;<input id="buscarMaq2" type="button" value="Buscar" onClick="buscaMaquinas(2);"><span id="botonPDF"></span>
-     <div id="divMuestraMaquinasDes" style=" width:99%;overflow:auto;"></div>
+     <div id="destinoMaq" style="font-size:12px; width:50%;height:auto; padding-left:49%;">
+      &nbsp;&nbsp;<strong>DESTINO</strong>
+      <br><br>&nbsp;&nbsp;&nbsp;&nbsp;Ubicacion: 
+      <select id="selectUbicacionDes" onChange="traeBusqueda(this.value,2);">
+        <option></option>
+        <option value="Bodega">Bodega</option>
+        <option value="Sala">Sala</option>
+        <option value="contrato">Nuevos Contratos</option>
+        <option value="OS">Orden Servicio</option>
+      </select>
+      &nbsp;&nbsp;
+      <span id="busquedaMaqDes" style="font-size:12px;"></span>
+      <br><br>&nbsp;&nbsp;&nbsp;&nbsp;<!--Serie:&nbsp;&nbsp;<div id='divBuscaSeriesDes' ></div><input id="inputSerieDes" type="text" size="7" onKeyUp="traeSeriesMM(this.value,2);">-->
+      <span id="numMaq"></span>
+      &nbsp;&nbsp;
+      <span id="spanOfficeIDdes"></span>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <input id="buscarMaq2" type="button" value="Buscar" onClick="buscaMaquinas(2);">
+      <span id="botonPDF"></span>
+      <div id="divMuestraMaquinasDes" style=" width:99%;overflow:auto;"></div>
      </div>
-     </div><!--cierra drag--> 
+</div><!--cierra drag--> 
 <div id="movimientosMaq" style="padding-top:100px">
        <form id='form_mcheckbox' name='form_mcheckbox' action='' method='post'><table id="tablaMovimientos" title="0">
            <caption>Movimientos de Maquinas</caption>
@@ -200,28 +239,28 @@ Ingresa numero de serie o numero de OS: <input type="text" style='font-size:12px
     <!-- MODAL PARA LA IMAGENES GARGADAS POS REFACCION -->
     <div id="modal_cargando" class="dimensiones_modal">
         <div class="contenido">
-					<div style="width: 100%;top: 40px;" >
-						<center> <h1>Cargando...</h1> <p> <i  style="color: #1fa67a;" class="fa fa-spinner fa-spin fa-2x"></i> </p> </center>
-					</div>            
+          <div style="width: 100%;top: 40px;" >
+            <center> <h1>Cargando...</h1> <p> <i  style="color: #1fa67a;" class="fa fa-spinner fa-spin fa-2x"></i> </p> </center>
+          </div>            
         </div>
     </div>
     <div class="muestra_imagen" style="display:none;"></div>
 
     <div id="modal_imagenes" class="dimensiones_modal" >
         <div class="contenido" style="height: 50%;">
-					<div style="width: 100%;display: inline-flex;justify-content: space-between;">
-							<p class="title-modal"></p>
-							<span class="cerrar" onClick="cerrar_modal_img();"> x</span> 
-					</div>
-					<div style="width: 100%;top: 40px;text-align: center;" class="contenido-modal">
-								
-					</div>            
+          <div style="width: 100%;display: inline-flex;justify-content: space-between;">
+              <p class="title-modal"></p>
+              <span class="cerrar" onClick="cerrar_modal_img();"> x</span> 
+          </div>
+          <div style="width: 100%;top: 40px;text-align: center;" class="contenido-modal">
+                
+          </div>            
         </div>
     </div>
     <script>
         $(".muestra_imagen").click(function() {
-			$(this).toggle();
-		 });
+      $(this).toggle();
+     });
         </script>
     <!-- -->
 </body>

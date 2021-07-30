@@ -156,6 +156,8 @@ var imgEditar="<img src='imgs/editarPequeno.bmp' title='Editar Cantidad' id='img
 //Busca Pedido
 function buscaListaPedido(valor){//alert(valor);
 
+	if(valor.length <= 3) return;
+	
 	$.ajax({
     url: 'php/buscaListaPedido.php',
     type: 'POST',
@@ -177,33 +179,8 @@ $.ajax({
    data: 'usuarioIDx='+usuarioID,
    dataType: "text",
    success: function Respuesta(result){//alert(result);
+   		ocultaDivs('PRODUCCION > Cambiar Contrase&ntilde;a', 'cContrasenaDiv');
 		document.getElementById("cContrasenaDiv").innerHTML = result;
-		document.getElementById('maquinasDiv').style.display='none';
-		document.getElementById('cContrasenaDiv').style.display='block';
- 	 	document.getElementById('reporteMaquinasDiv').style.display='none';
-	 	document.getElementById('solPedidosDiv').style.display='none';
-		document.getElementById('reporteDeMaquinasDiv').style.display='none';
-		document.getElementById('entradasProDiv').style.display='none';
-		document.getElementById('inventarioProDiv').style.display='none';
-		document.getElementById('ordenServicioDiv').style.display='none';
-		document.getElementById('divReporteOS').style.display='none';
-		document.getElementById('pedidoNuevoDiv').style.display='none';
-		document.getElementById('divMaquinasBodegas').style.display="none";
-        document.getElementById('inventarioDiv').style.display="none";
-		document.getElementById("reportePedidosATdiv").style.display='none';
-		document.getElementById('devolucionesMdiv').style.display='none';
-		document.getElementById('crearCB').style.display='none';
-		document.getElementById('divReporteContratos').style.display='none';
-		document.getElementById('divMaquinasPlacas').style.display="none";
-		document.getElementById('divReportedePlacas').style.display="none";
-		document.getElementById('maqIncompletasDiv').style.display='none';
-		document.getElementById('ReporteDevolucionesdiv').style.display="none";
-		document.getElementById('GenCB').style.display="none";
-	document.getElementById('filtraInvCod').style.display="none";
-	document.getElementById('divRelacionComSerieDos').style.display='none';
-	document.getElementById('divReporteComponete').style.display="none";
-	document.getElementById('divImpCompMaq').style.display="none";
-	document.getElementById('divConversionMaq').style.display="none";
    },
    error: Error
    });
@@ -297,90 +274,39 @@ function cambiaColorPedido(){
 }
 //muestra lista de pedidos
 function solPedidos(){//alert('hi');
-if(document.getElementById('solPedidosDiv').innerHTML==''){
-$.ajax({
-   url: 'php/solPedidos.php',
-   type: 'POST',
-   async: true,
-   data: '',
-   dataType: "text",
-   success: function Respuesta(result){//alert(result);
-   		document.getElementById('solPedidosDiv').innerHTML=result;
-		abrirLista();
-   },
-   error: Error
-   });}
-   		document.getElementById('reporteMaquinasDiv').style.display='none';
-		document.getElementById('cContrasenaDiv').style.display='none';
-		document.getElementById('maquinasDiv').style.display='none';
-		document.getElementById('solPedidosDiv').style.display='block';
-		document.getElementById('reporteDeMaquinasDiv').style.display='none';
-		document.getElementById('entradasProDiv').style.display='none';
-		document.getElementById('inventarioProDiv').style.display='none';
-		document.getElementById('ordenServicioDiv').style.display='none';
-		document.getElementById('divReporteOS').style.display='none';
-		document.getElementById('pedidoNuevoDiv').style.display='none';
-		document.getElementById('inventarioDiv').style.display="none";
-		document.getElementById('divMaquinasBodegas').style.display="none";
-		document.getElementById("reportePedidosATdiv").style.display='none';
-		document.getElementById('devolucionesMdiv').style.display='none';
-		document.getElementById('crearCB').style.display='none';
-		document.getElementById('ReporteDevolucionesdiv').style.display="none";
-		document.getElementById('divReporteContratos').style.display='none';
-		document.getElementById('divMaquinasPlacas').style.display="none";
-		document.getElementById('divReportedePlacas').style.display="none";
-		document.getElementById('maqIncompletasDiv').style.display='none';
-		document.getElementById('GenCB').style.display="none";
-	document.getElementById('filtraInvCod').style.display="none";
-	document.getElementById('divRelacionComSerieDos').style.display='none';
-	document.getElementById('divReporteComponete').style.display="none";
-	document.getElementById('divImpCompMaq').style.display="none";
-	document.getElementById('divConversionMaq').style.display="none";
-		document.getElementById('dir').innerHTML='PRODUCCION > Solicitudes de Pedidos';
+	if(document.getElementById('solPedidosDiv').innerHTML==''){
+		$.ajax({
+			url: 'php/solPedidos.php',
+			type: 'POST',
+			async: true,
+			data: '',
+			dataType: "text",
+			success: function Respuesta(result){//alert(result);
+					document.getElementById('solPedidosDiv').innerHTML=result;
+				abrirLista();
+			},
+			error: Error
+		});
+	}
+	ocultaDivs('PRODUCCION > Solicitudes de Pedidos', 'solPedidosDiv');
 }
 
 //muestra formulario para reporte de maquinas
 function reporteMaq(){//alert(val);
-if(document.getElementById('reporteMaquinasDiv').innerHTML==''){
-	$.ajax({
-	url: 'php/reporteMaq.php',
-	type: 'POST',
-	async: true,
-	data: '',
-	success: function resp(result){//alert(result);
-		document.getElementById('reporteMaquinasDiv').innerHTML=result;
-		ocultaDiv(111);ocultaDiv(222);
-	},
-	error: Error
-	}); 
-}
-	 document.getElementById('maquinasDiv').style.display='none';
-	 document.getElementById('reporteMaquinasDiv').style.display='block';
-	 document.getElementById('solPedidosDiv').style.display='none';
-	 document.getElementById('cContrasenaDiv').style.display='none';
-	 document.getElementById('reporteDeMaquinasDiv').style.display='none';
-	 document.getElementById('entradasProDiv').style.display='none';
-	 document.getElementById('inventarioProDiv').style.display='none';
-	 document.getElementById('ordenServicioDiv').style.display='none';
-	 document.getElementById('divReporteOS').style.display='none';
-	 document.getElementById('pedidoNuevoDiv').style.display='none';
-	 document.getElementById('inventarioDiv').style.display="none";
-	 document.getElementById('divMaquinasBodegas').style.display="none";
-	 document.getElementById("reportePedidosATdiv").style.display='none';
-	 document.getElementById('devolucionesMdiv').style.display='none';
-	 document.getElementById('crearCB').style.display='none';
-	 document.getElementById('ReporteDevolucionesdiv').style.display="none";
-	 document.getElementById('divReporteContratos').style.display='none';
-	 document.getElementById('divMaquinasPlacas').style.display="none";
-	 document.getElementById('divReportedePlacas').style.display="none";
-	 document.getElementById('maqIncompletasDiv').style.display='none';
-	 document.getElementById('GenCB').style.display="none";
-	document.getElementById('filtraInvCod').style.display="none";
-	document.getElementById('divRelacionComSerieDos').style.display='none';
-	document.getElementById('divReporteComponete').style.display="none";
-	document.getElementById('divImpCompMaq').style.display="none";
-	document.getElementById('divConversionMaq').style.display="none";
-	 document.getElementById('dir').innerHTML='PRODUCCION > Historial de Maquinas';
+	if(document.getElementById('reporteMaquinasDiv').innerHTML==''){
+		$.ajax({
+			url: 'php/reporteMaq.php',
+			type: 'POST',
+			async: true,
+			data: '',
+			success: function resp(result){//alert(result);
+				document.getElementById('reporteMaquinasDiv').innerHTML=result;
+				ocultaDiv(111);ocultaDiv(222);
+			},
+			error: Error
+		}); 
+	}
+	ocultaDivs('PRODUCCION > Historial de Maquinas', 'reporteMaquinasDiv');
 }
 //Busqueda de Reporte de Maquinas
 function busquedaReporteMaqAT(txtFHRCalendario111, txtFHRCalendario222, txtSerieAT, selectUbicacionAT, selectRegionAT, selectSalaAT){//alert(txtFHRCalendario111+' | '+txtFHRCalendario222+' | '+txtSerieAT+' | '+selectUbicacionAT+' | '+selectRegionAT+' | '+selectSalaAT);
@@ -444,33 +370,8 @@ function traeSalasReg(reg){//alert('dar entrada');
    error: Error
    });//}
 }
-function movMaquinas(){document.getElementById('reporteMaquinasDiv').style.display='none';
-	 document.getElementById('solPedidosDiv').style.display='none';
-	 document.getElementById('cContrasenaDiv').style.display='none';
-	 document.getElementById('maquinasDiv').style.display='block';
-	 document.getElementById('reporteDeMaquinasDiv').style.display='none';
-	 document.getElementById('entradasProDiv').style.display='none';
-	 document.getElementById('inventarioProDiv').style.display='none';
-	 document.getElementById('ordenServicioDiv').style.display='none';
-	 document.getElementById('divReporteOS').style.display='none';
-	 document.getElementById('pedidoNuevoDiv').style.display='none';
-	 document.getElementById('inventarioDiv').style.display="none";
-	 document.getElementById('divMaquinasBodegas').style.display="none";
-	 document.getElementById("reportePedidosATdiv").style.display='none';
-	 document.getElementById('devolucionesMdiv').style.display='none';
-	 document.getElementById('crearCB').style.display='none';
-	 document.getElementById('ReporteDevolucionesdiv').style.display="none";
-	 document.getElementById('divReporteContratos').style.display='none';
-	 document.getElementById('divMaquinasPlacas').style.display="none";
-	 document.getElementById('divReportedePlacas').style.display="none";
-	 document.getElementById('maqIncompletasDiv').style.display='none';
-	 document.getElementById('GenCB').style.display="none";
-	document.getElementById('filtraInvCod').style.display="none";
-	document.getElementById('divRelacionComSerieDos').style.display='none';
-	document.getElementById('divReporteComponete').style.display="none";
-	document.getElementById('divImpCompMaq').style.display="none";
-	document.getElementById('divConversionMaq').style.display="none";
-	 document.getElementById('dir').innerHTML='PRODUCCION > Movimiento Maquinas';
+function movMaquinas(){
+	ocultaDivs('PRODUCCION > Movimiento Maquinas', 'maquinasDiv');
 }
 function traeBusqueda(valor,n){if(n==1){
 	
@@ -1266,45 +1167,19 @@ window.open("php/dompdf/tabla.php?bodegax="+bodega+"&rackx="+rack+"&nivelx="+niv
 }
 //muestra formulario para reporte de maquinas
 function reporteDeMaquinas(){
-if(document.getElementById('reporteDeMaquinasDiv').innerHTML==''){//alert('hi');
-	$.ajax({
-	url: 'php/reporteDeMaquinas.php',
-	type: 'POST',
-	async: true,
-	data: '',
-	success: function resp(result){//alert(result);
-		document.getElementById('reporteDeMaquinasDiv').innerHTML=result;
-	},
-	error: Error
-	}); 
-}
-	 document.getElementById('maquinasDiv').style.display='none';
-	 document.getElementById('reporteDeMaquinasDiv').style.display='block';
-	 document.getElementById('solPedidosDiv').style.display='none';
-	 document.getElementById('cContrasenaDiv').style.display='none';
-	 document.getElementById('reporteMaquinasDiv').style.display='none';
-	 document.getElementById('entradasProDiv').style.display='none';
-	 document.getElementById('inventarioProDiv').style.display='none';
-	 document.getElementById('ordenServicioDiv').style.display='none';
-	 document.getElementById('divReporteOS').style.display='none';
-	 document.getElementById('pedidoNuevoDiv').style.display='none';
-	 document.getElementById('inventarioDiv').style.display="none";
-	 document.getElementById('divMaquinasBodegas').style.display="none";
-	 document.getElementById("reportePedidosATdiv").style.display='none';
-	 document.getElementById('devolucionesMdiv').style.display='none';
-	 document.getElementById('crearCB').style.display='none';
-	 document.getElementById('ReporteDevolucionesdiv').style.display="none";
-	 document.getElementById('divReporteContratos').style.display='none';
-	 document.getElementById('divMaquinasPlacas').style.display="none";
-	 document.getElementById('divReportedePlacas').style.display="none";
-	 document.getElementById('maqIncompletasDiv').style.display='none';
-	 document.getElementById('GenCB').style.display="none";
-	document.getElementById('filtraInvCod').style.display="none";
-	document.getElementById('divRelacionComSerieDos').style.display='none';
-	document.getElementById('divReporteComponete').style.display="none";
-	document.getElementById('divImpCompMaq').style.display="none";
-	document.getElementById('divConversionMaq').style.display="none";
-	 document.getElementById('dir').innerHTML='PRODUCCION > Reporte de Maquinas';
+	if(document.getElementById('reporteDeMaquinasDiv').innerHTML==''){//alert('hi');
+		$.ajax({
+			url: 'php/reporteDeMaquinas.php',
+			type: 'POST',
+			async: true,
+			data: '',
+			success: function resp(result){//alert(result);
+				document.getElementById('reporteDeMaquinasDiv').innerHTML=result;
+			},
+			error: Error
+		}); 
+	}
+	ocultaDivs('PRODUCCION > Reporte de Maquinas', 'reporteDeMaquinasDiv');
 }
 function traeDatosRM(valor){
 	if(valor=='Bodega'){document.getElementById('spanExportarPDF').innerHTML='<input type="image" src="imgs/pdf.png" title="Exportar PDF"  style="cursor:pointer" onclick="exportarRepPDF();" />'; 
@@ -1422,33 +1297,7 @@ function entradasPro(){
 	error: Error
 	}); 
 //}
-	 document.getElementById('maquinasDiv').style.display='none';
-	 document.getElementById('entradasProDiv').style.display='block';
-	 document.getElementById('solPedidosDiv').style.display='none';
-	 document.getElementById('cContrasenaDiv').style.display='none';
-	 document.getElementById('reporteMaquinasDiv').style.display='none';
-	 document.getElementById('reporteDeMaquinasDiv').style.display='none';
-	 document.getElementById('inventarioProDiv').style.display='none';
-	 document.getElementById('ordenServicioDiv').style.display='none';
-	 document.getElementById('divReporteOS').style.display='none';
-	 document.getElementById('pedidoNuevoDiv').style.display='none';
-	 document.getElementById('inventarioDiv').style.display="none";
-	 document.getElementById('divMaquinasBodegas').style.display="none";
-	 document.getElementById("reportePedidosATdiv").style.display='none';
-	 document.getElementById('devolucionesMdiv').style.display='none';
-	 document.getElementById('crearCB').style.display='none';
-	 document.getElementById('ReporteDevolucionesdiv').style.display="none";
-	 document.getElementById('divReporteContratos').style.display='none';
-	 document.getElementById('divMaquinasPlacas').style.display="none";
-	 document.getElementById('divReportedePlacas').style.display="none";
-	 document.getElementById('maqIncompletasDiv').style.display='none';
-	 document.getElementById('GenCB').style.display="none";
-	document.getElementById('filtraInvCod').style.display="none";
-	document.getElementById('divRelacionComSerieDos').style.display='none';
-	document.getElementById('divReporteComponete').style.display="none";
-	document.getElementById('divImpCompMaq').style.display="none";
-	document.getElementById('divConversionMaq').style.display="none";
-	 document.getElementById('dir').innerHTML='PRODUCCION > Entradas Producci&oacute;n';
+	ocultaDivs('PRODUCCION > Entradas Producci&oacute;n', 'entradasProDiv');
 }
 //acepta o cancela entradas
 function movimientosEntradasPro(num,tr,entrada,ref){//alert(num+' | '+tr+' | '+entrada+' | '+ref); //return false;
@@ -1478,33 +1327,8 @@ function inventarioPro(){
 	error: Error
 	}); 
 //}
-	 document.getElementById('maquinasDiv').style.display='none';
-	 document.getElementById('inventarioProDiv').style.display='block';
-	 document.getElementById('solPedidosDiv').style.display='none';
-	 document.getElementById('cContrasenaDiv').style.display='none';
-	 document.getElementById('reporteMaquinasDiv').style.display='none';
-	 document.getElementById('reporteDeMaquinasDiv').style.display='none';
-	 document.getElementById('entradasProDiv').style.display='none';
-	 document.getElementById('ordenServicioDiv').style.display='none';
-	 document.getElementById('divReporteOS').style.display='none';
-	 document.getElementById('pedidoNuevoDiv').style.display='none';
-	 document.getElementById('inventarioDiv').style.display="none";
-	 document.getElementById('divMaquinasBodegas').style.display="none";
-	 document.getElementById("reportePedidosATdiv").style.display='none';
-	 document.getElementById('devolucionesMdiv').style.display='none';
-	 document.getElementById('crearCB').style.display='none';
-	 document.getElementById('ReporteDevolucionesdiv').style.display="none";
-	 document.getElementById('divReporteContratos').style.display='none';
-	 document.getElementById('divMaquinasPlacas').style.display="none";
-	 document.getElementById('divReportedePlacas').style.display="none";
-	 document.getElementById('maqIncompletasDiv').style.display='none';
-	 document.getElementById('GenCB').style.display="none";
-	document.getElementById('filtraInvCod').style.display="none";
-	document.getElementById('divRelacionComSerieDos').style.display='none';
-	document.getElementById('divReporteComponete').style.display="none";
-	document.getElementById('divImpCompMaq').style.display="none";
-	document.getElementById('divConversionMaq').style.display="none";
-	 document.getElementById('dir').innerHTML='PRODUCCION > Inventario Producci&oacute;n';
+	ocultaDivs('PRODUCCION > Inventario Producci&oacute;n', 'inventarioProDiv');
+	 
 }
 //acepta o cancela entradas
 function movimientosSalidasPro(num,tr,entrada,ref,obs,serie){//alert(num+' | '+tr+' | '+entrada+' | '+ref+' | '+obs+' | '+serie); //return false;
@@ -1529,34 +1353,7 @@ if(document.getElementById('busquedaListaInput')){
 			document.getElementById('busquedaListaInput').blur();
 		}
 	}	
-
-	 document.getElementById('maquinasDiv').style.display='none';
-	 document.getElementById('inventarioProDiv').style.display='none';
-	 document.getElementById('solPedidosDiv').style.display='none';
-	 document.getElementById('cContrasenaDiv').style.display='none';
-	 document.getElementById('reporteMaquinasDiv').style.display='none';
-	 document.getElementById('reporteDeMaquinasDiv').style.display='none';
-	 document.getElementById('entradasProDiv').style.display='none';
-	 document.getElementById('ordenServicioDiv').style.display='block';
-	 document.getElementById('divReporteOS').style.display='none';
-	 document.getElementById('pedidoNuevoDiv').style.display='none';
-	 document.getElementById('inventarioDiv').style.display="none";
-	 document.getElementById('divMaquinasBodegas').style.display="none";
-	 document.getElementById("reportePedidosATdiv").style.display='none';
-	 document.getElementById('devolucionesMdiv').style.display='none';
-	 document.getElementById('crearCB').style.display='none';
-	 document.getElementById('ReporteDevolucionesdiv').style.display="none";
-	 document.getElementById('divReporteContratos').style.display='none';
-	 document.getElementById('divMaquinasPlacas').style.display="none";
-	 document.getElementById('divReportedePlacas').style.display="none";
-	 document.getElementById('maqIncompletasDiv').style.display='none';
-	 document.getElementById('GenCB').style.display="none";
-	document.getElementById('filtraInvCod').style.display="none";
-	document.getElementById('divRelacionComSerieDos').style.display='none';
-	document.getElementById('divReporteComponete').style.display="none";
-	document.getElementById('divImpCompMaq').style.display="none";
-	document.getElementById('divConversionMaq').style.display="none";
-	 document.getElementById('dir').innerHTML='PRODUCCION > Orden Servicio';
+	ocultaDivs('PRODUCCION > Orden Servicio', 'ordenServicioDiv');
 	listaOrdenOS(area,valor);
 	if(intervalo){
         clearInterval(intervalo); //alert("stop");
@@ -1582,47 +1379,21 @@ $.ajax({
 });
 }
 function reporteOSPR(){
-document.getElementById('maquinasDiv').style.display='none';
-	 document.getElementById('inventarioProDiv').style.display='none';
-	 document.getElementById('solPedidosDiv').style.display='none';
-	 document.getElementById('cContrasenaDiv').style.display='none';
-	 document.getElementById('reporteMaquinasDiv').style.display='none';
-	 document.getElementById('reporteDeMaquinasDiv').style.display='none';
-	 document.getElementById('entradasProDiv').style.display='none';
-	 document.getElementById('ordenServicioDiv').style.display='none';
-	 document.getElementById('pedidoNuevoDiv').style.display='none';
-	 document.getElementById('inventarioDiv').style.display="none";
-	 document.getElementById('divMaquinasBodegas').style.display="none";
-	 document.getElementById("reportePedidosATdiv").style.display='none';
-	 document.getElementById('devolucionesMdiv').style.display='none';
-	 document.getElementById('crearCB').style.display='none';
-	 document.getElementById('ReporteDevolucionesdiv').style.display="none";
-	 document.getElementById('divReporteContratos').style.display='none';
-	 document.getElementById('divMaquinasPlacas').style.display="none";
-	 document.getElementById('divReportedePlacas').style.display="none";
-	 document.getElementById('maqIncompletasDiv').style.display='none';
-	 document.getElementById('GenCB').style.display="none";
-	document.getElementById('filtraInvCod').style.display="none";
-	document.getElementById('divRelacionComSerieDos').style.display='none';
-	document.getElementById('divReporteComponete').style.display="none";
-	document.getElementById('divImpCompMaq').style.display="none";
-	document.getElementById('divConversionMaq').style.display="none";
-document.getElementById('dir').innerHTML='PRODUCCION > Orden de Servicio > Reportes';
-document.getElementById('divReporteOS').style.display='block';
-if(document.getElementById('divReporteOS').innerHTML!=''){return -1;}
-$.ajax({
-   url: '../Vistas/reporteOrdenes/reporteOS.php',
-   type: 'POST',
-   async: true,
-   data: '',
-   dataType: "text",
-   success: function Respuesta(result){
-   document.getElementById("divReporteOS").innerHTML = result;
-   ocultaDiv(200);
-   ocultaDiv(201);
-   },
-   error: Error
- });
+	ocultaDivs('PRODUCCION > Orden de Servicio > Reportes', 'divReporteOS');
+	if(document.getElementById('divReporteOS').innerHTML!=''){return -1;}
+	$.ajax({
+	   url: '../Vistas/reporteOrdenes/reporteOS.php',
+	   type: 'POST',
+	   async: true,
+	   data: '',
+	   dataType: "text",
+	   success: function Respuesta(result){
+	   document.getElementById("divReporteOS").innerHTML = result;
+	   ocultaDiv(200);
+	   ocultaDiv(201);
+	   },
+	   error: Error
+	 });
 }
 
 function BuscaPedimentos(bodega,rack,nivel,pedimento)
@@ -1778,56 +1549,30 @@ function irMenuAnterior(){ var paisID='1';
  });
 }
 function pedidoNuevo2(){
-	document.getElementById('maquinasDiv').style.display='none';
-	 document.getElementById('inventarioProDiv').style.display='none';
-	 document.getElementById('solPedidosDiv').style.display='none';
-	 document.getElementById('cContrasenaDiv').style.display='none';
-	 document.getElementById('reporteMaquinasDiv').style.display='none';
-	 document.getElementById('reporteDeMaquinasDiv').style.display='none';
-	 document.getElementById('entradasProDiv').style.display='none';
-	 document.getElementById('ordenServicioDiv').style.display='none';
-	 document.getElementById('pedidoNuevoDiv').style.display='block';
-	 document.getElementById('inventarioDiv').style.display="none";
-	 document.getElementById('divMaquinasBodegas').style.display="none";
-	 document.getElementById("reportePedidosATdiv").style.display='none';
-	 document.getElementById('devolucionesMdiv').style.display='none';
-	 document.getElementById('crearCB').style.display='none';
-	 document.getElementById('ReporteDevolucionesdiv').style.display="none";
-	 document.getElementById('divReporteContratos').style.display='none';
-	 document.getElementById('divMaquinasPlacas').style.display="none";
-	 document.getElementById('divReportedePlacas').style.display="none";
-	 document.getElementById('maqIncompletasDiv').style.display='none';
-	 document.getElementById('GenCB').style.display="none";
-	document.getElementById('filtraInvCod').style.display="none";
-	document.getElementById('divRelacionComSerieDos').style.display='none';
-	document.getElementById('divReporteComponete').style.display="none";
-	document.getElementById('divImpCompMaq').style.display="none";
-	document.getElementById('divConversionMaq').style.display="none";
-document.getElementById('dir').innerHTML='PRODUCCION > Solicitud de Material';
-//if(document.getElementById('pedidoNuevoDiv').innerHTML!=''){return -1;}
-//else{
+	ocultaDivs('PRODUCCION > Solicitud de Material', 'pedidoNuevoDiv');
 	var paisID=1;
 	$.ajax({
-    url: 'php/pedidoNuevoPro.php',
-    type: 'POST',
-   async: true,
-   data: 'paisIDx='+paisID,
-   dataType: "text",
-   success: function Respuesta(result){
-	  // var ele; //var con;
-/*var div='<div id="pedidoNuevoDiv" style="overflow:auto; border:#A8D3FF solid 2px";></div>';*/
-   //if(document.getElementById(seleccionada+'Div')){document.getElementById(seleccionada+'Div').style.display= "none";}
-   /*document.getElementById('contenido').innerHTML += div;*///con=document.getElementById('contenido');
-   //con=document.getElementById('contenido');
-   //ele = document.createElement('div');
-   //ele.id = 'pedidoNuevoDiv';
-   //con.appendChild(ele);
-   //document.getElementById('pedidoNuevoDiv').innerHTML = result
-   document.getElementById('pedidoNuevoDiv').innerHTML=result;
-   //insertarPestana('pedidoNuevo','Nuevo Pedido');
-  },
-   error: Error
-   });}
+	    url: 'php/pedidoNuevoPro.php',
+	    type: 'POST',
+	   	async: true,
+	   	data: 'paisIDx='+paisID,
+	   	dataType: "text",
+	   	success: function Respuesta(result){
+			// var ele; //var con;
+			/*var div='<div id="pedidoNuevoDiv" style="overflow:auto; border:#A8D3FF solid 2px";></div>';*/
+			//if(document.getElementById(seleccionada+'Div')){document.getElementById(seleccionada+'Div').style.display= "none";}
+			/*document.getElementById('contenido').innerHTML += div;*///con=document.getElementById('contenido');
+			//con=document.getElementById('contenido');
+			//ele = document.createElement('div');
+			//ele.id = 'pedidoNuevoDiv';
+			//con.appendChild(ele);
+			//document.getElementById('pedidoNuevoDiv').innerHTML = result
+			document.getElementById('pedidoNuevoDiv').innerHTML=result;
+			//insertarPestana('pedidoNuevo','Nuevo Pedido');
+	  	},
+	   	error: Error
+   });
+}
 //}
 function traeSalasPN(region){var fol='0'; var n=3;
 	$.ajax({
@@ -2102,45 +1847,20 @@ error: Error
 }*/
 function reporteInventario(){
 	if(document.getElementById('menuInventario').innerHTML == ''){
-$.ajax({
-   url: '../Vistas/Reporte Inventario/menuInventario.php',
-   type: 'POST',
-   async: true,
-   data: '',
-   dataType: "text",
-   success: function Respuesta(result){
-   document.getElementById("menuInventario").innerHTML = result;
-   },
-   error: Error
-   });
+		$.ajax({
+		   url: '../Vistas/Reporte Inventario/menuInventario.php',
+		   type: 'POST',
+		   async: true,
+		   data: '',
+		   dataType: "text",
+		   success: function Respuesta(result){
+		   document.getElementById("menuInventario").innerHTML = result;
+		   },
+		   error: Error
+		});
 	}
-   document.getElementById('inventarioDiv').style.display="block";
-  document.getElementById("cContrasenaDiv").style.display='none';
-		document.getElementById('maquinasDiv').style.display='none';
-		document.getElementById('cContrasenaDiv').style.display='none';
- 	 	document.getElementById('reporteMaquinasDiv').style.display='none';
-	 	document.getElementById('solPedidosDiv').style.display='none';
-		document.getElementById('reporteDeMaquinasDiv').style.display='none';
-		document.getElementById('entradasProDiv').style.display='none';
-		document.getElementById('inventarioProDiv').style.display='none';
-		document.getElementById('ordenServicioDiv').style.display='none';
-		document.getElementById('divReporteOS').style.display='none';
-		document.getElementById('pedidoNuevoDiv').style.display='none';
-		document.getElementById('divMaquinasBodegas').style.display="none";
-		document.getElementById('devolucionesMdiv').style.display='none';
-		document.getElementById("reportePedidosATdiv").style.display='none';
-		document.getElementById('crearCB').style.display='none';
-		document.getElementById('ReporteDevolucionesdiv').style.display="none";
-		document.getElementById('divReporteContratos').style.display='none';
-		document.getElementById('divMaquinasPlacas').style.display="none";
-		document.getElementById('divReportedePlacas').style.display="none";
-		document.getElementById('maqIncompletasDiv').style.display='none';
-		document.getElementById('GenCB').style.display="none";
-	document.getElementById('filtraInvCod').style.display="none";
-	document.getElementById('divReporteComponete').style.display="none";
-	document.getElementById('divRelacionComSerieDos').style.display='none';
-	document.getElementById('divImpCompMaq').style.display="none";
-	document.getElementById('divConversionMaq').style.display="none";
+	ocultaDivs('PRODUCCION > Cat&aacute;logo Piezas', 'inventarioDiv');
+ 
 }
 function buscaInv(cod,fam,nom,area){//alert();
  $.ajax({
@@ -2268,44 +1988,17 @@ function traeParteListaCont(contratoid,n){
    });
 }
 function modMaquinas(){
-  $.ajax({
-  url: 'php/nuevoMaquinasBodega.php',
-  type: 'POST',
-  async: true,
-  data: 'paisIDx='+paisID,
-  success: function respuesta(result){
-	    document.getElementById('divMaquinasBodegas').innerHTML=result;
-	   document.getElementById('divMaquinasBodegas').style.display="block";
-	   document.getElementById('inventarioDiv').style.display="none";
-  document.getElementById("cContrasenaDiv").style.display='none';
-		document.getElementById('maquinasDiv').style.display='none';
-		document.getElementById('cContrasenaDiv').style.display='none';
- 	 	document.getElementById('reporteMaquinasDiv').style.display='none';
-	 	document.getElementById('solPedidosDiv').style.display='none';
-		document.getElementById('reporteDeMaquinasDiv').style.display='none';
-		document.getElementById('entradasProDiv').style.display='none';
-		document.getElementById('inventarioProDiv').style.display='none';
-		document.getElementById('ordenServicioDiv').style.display='none';
-		document.getElementById('divReporteOS').style.display='none';
-		document.getElementById('pedidoNuevoDiv').style.display='none';
-		document.getElementById("reportePedidosATdiv").style.display='none';
-		document.getElementById('devolucionesMdiv').style.display='none';
-		document.getElementById('crearCB').style.display='none';
-		document.getElementById('ReporteDevolucionesdiv').style.display="none";
-		document.getElementById('divReporteContratos').style.display='none';
-		document.getElementById('divMaquinasPlacas').style.display="none";
-		document.getElementById('divReportedePlacas').style.display="none";
-		document.getElementById('maqIncompletasDiv').style.display='none';
-		document.getElementById('GenCB').style.display="none";
-	document.getElementById('filtraInvCod').style.display="none";
-	document.getElementById('divRelacionComSerieDos').style.display='none';
-	document.getElementById('divReporteComponete').style.display="none";
-	document.getElementById('divImpCompMaq').style.display="none";
-	document.getElementById('divConversionMaq').style.display="none";
-		document.getElementById('dir').innerHTML='PRODUCCION > Maquinas en Bodega';
-	   },
-  error: Error
- });
+  	$.ajax({
+		url: 'php/nuevoMaquinasBodega.php',
+		type: 'POST',
+		async: true,
+		data: 'paisIDx='+paisID,
+		success: function respuesta(result){
+			ocultaDivs('PRODUCCION > Maquinas en Bodega', 'divMaquinasBodegas');
+		    document.getElementById('divMaquinasBodegas').innerHTML=result;
+		},
+		error: Error
+ 	});
 }
 function traedatosBod(valor){//alert(valor);
   $.ajax({
@@ -2387,35 +2080,9 @@ function mostrarReportePedido(){
   async: true,
   data: '',
   success: function respuesta(result){//alert(result);//location.href='../index.html';
+  	ocultaDivs('PRODUCCION > Entradas > Con Folio de Retorno SISCO', 'reportePedidosATdiv');
    	document.getElementById('reportePedidosATdiv').innerHTML=result;
-  	document.getElementById('dir').innerHTML='PRODUCCION > Entradas > Con Folio de Retorno SISCO';
-	document.getElementById("reportePedidosATdiv").style.display='block';
-		document.getElementById('maquinasDiv').style.display='none';
-		document.getElementById('cContrasenaDiv').style.display='none';
- 	 	document.getElementById('reporteMaquinasDiv').style.display='none';
-	 	document.getElementById('solPedidosDiv').style.display='none';
-		document.getElementById('reporteDeMaquinasDiv').style.display='none';
-		document.getElementById('entradasProDiv').style.display='none';
-		document.getElementById('inventarioProDiv').style.display='none';
-		document.getElementById('ordenServicioDiv').style.display='none';
-		document.getElementById('divReporteOS').style.display='none';
-		document.getElementById('pedidoNuevoDiv').style.display='none';
-		document.getElementById('divMaquinasBodegas').style.display="none";
-		document.getElementById('devolucionesMdiv').style.display='none';
-        document.getElementById('inventarioDiv').style.display="none";
-		document.getElementById('crearCB').style.display='none';
-		document.getElementById('ReporteDevolucionesdiv').style.display="none";
-		document.getElementById('divReporteContratos').style.display='none';
-		document.getElementById('divMaquinasPlacas').style.display="none";
-		document.getElementById('divReportedePlacas').style.display="none";
-		document.getElementById('maqIncompletasDiv').style.display='none';
-		document.getElementById('GenCB').style.display="none";
-	document.getElementById('filtraInvCod').style.display="none";
-	document.getElementById('divReporteComponete').style.display="none";
-	document.getElementById('divRelacionComSerieDos').style.display='none';
-	document.getElementById('divImpCompMaq').style.display="none";
-	document.getElementById('divConversionMaq').style.display="none";
-   ocultaDiv(33); ocultaDiv(44);
+    ocultaDiv(33); ocultaDiv(44);
   },
   error: Error
  });	
@@ -2446,34 +2113,7 @@ function detalleRepPed(folio, pedido){//alert(pedido);
 window.open("../Vistas/Reporte Pedidos/detalleRepPed.php?pedidox="+pedido+"&foliox="+folio,"Detalle","width=1100,height=400,top=50,left=50,scrollbars=YES");
 }
 function devolucion(){
-	document.getElementById('dir').innerHTML='PRODUCCION > Devolucion';
-							//document.getElementById('tabla').innerHTML='';
-		document.getElementById("reportePedidosATdiv").style.display='none';
-		document.getElementById('maquinasDiv').style.display='none';
-		document.getElementById('cContrasenaDiv').style.display='none';
- 	 	document.getElementById('reporteMaquinasDiv').style.display='none';
-	 	document.getElementById('solPedidosDiv').style.display='none';
-		document.getElementById('reporteDeMaquinasDiv').style.display='none';
-		document.getElementById('entradasProDiv').style.display='none';
-		document.getElementById('inventarioProDiv').style.display='none';
-		document.getElementById('ordenServicioDiv').style.display='none';
-		document.getElementById('divReporteOS').style.display='none';
-		document.getElementById('pedidoNuevoDiv').style.display='none';
-		document.getElementById('divMaquinasBodegas').style.display="none";
-        document.getElementById('inventarioDiv').style.display="none";
-		document.getElementById('crearCB').style.display='none';
-		document.getElementById('ReporteDevolucionesdiv').style.display="none";
-		document.getElementById('divReporteContratos').style.display='none';
-		document.getElementById('divMaquinasPlacas').style.display="none";
-		document.getElementById('divReportedePlacas').style.display="none";
-		document.getElementById('maqIncompletasDiv').style.display='none';
-		document.getElementById('GenCB').style.display="none";
-	document.getElementById('filtraInvCod').style.display="none";
-	document.getElementById('divRelacionComSerieDos').style.display='none';
-	document.getElementById('divReporteComponete').style.display="none";
-	document.getElementById('divImpCompMaq').style.display="none";
-	document.getElementById('divConversionMaq').style.display="none";
-		document.getElementById('devolucionesMdiv').style.display='block';
+	ocultaDivs('PRODUCCION > Devolucion', 'devolucionesMdiv');
 }
 function crearDevolucion(area){ 
 	$.ajax({
@@ -2551,45 +2191,20 @@ function poneSalaDevolucion(valor){//alert(valor);
  });
 }
 function CrearCB(){
-	  $.ajax({
-	  url: '../STOCK/CrearcodBarra.php',
-	  type: 'POST',
-	  async: true,
-	  data: '',
-	  dataType: "text",
-	  success: function Respuesta(result){document.getElementById('crearCB').innerHTML = result;
-	 // buscaInv("","TODAS","")
-	 ;},
+	$.ajax({
+		url: '../STOCK/CrearcodBarra.php',
+		type: 'POST',
+		async: true,
+		data: '',
+		dataType: "text",
+		success: function Respuesta(result){
+			document.getElementById('crearCB').innerHTML = result;
+		// buscaInv("","TODAS","")
+		},
 	  error: Error
-  });
-	document.getElementById('dir').innerHTML='PRODUCCION > Generar Codigo de Barras';
-document.getElementById("reportePedidosATdiv").style.display='none';
-		document.getElementById('maquinasDiv').style.display='none';
-		document.getElementById('cContrasenaDiv').style.display='none';
- 	 	document.getElementById('reporteMaquinasDiv').style.display='none';
-	 	document.getElementById('solPedidosDiv').style.display='none';
-		document.getElementById('reporteDeMaquinasDiv').style.display='none';
-		document.getElementById('entradasProDiv').style.display='none';
-		document.getElementById('inventarioProDiv').style.display='none';
-		document.getElementById('ordenServicioDiv').style.display='none';
-		document.getElementById('divReporteOS').style.display='none';
-		document.getElementById('pedidoNuevoDiv').style.display='none';
-		document.getElementById('divMaquinasBodegas').style.display="none";
-        document.getElementById('inventarioDiv').style.display="none";
-		document.getElementById('devolucionesMdiv').style.display='none';
-		document.getElementById('ReporteDevolucionesdiv').style.display="none";
-		document.getElementById('divReporteContratos').style.display='none';
-		document.getElementById('divMaquinasPlacas').style.display="none";
-		document.getElementById('divReportedePlacas').style.display="none";
-		document.getElementById('maqIncompletasDiv').style.display='none';
-		document.getElementById('GenCB').style.display="none";
-	document.getElementById('filtraInvCod').style.display="none";
-	document.getElementById('divRelacionComSerieDos').style.display='none';
-	document.getElementById('divReporteComponete').style.display="none";
-		document.getElementById('crearCB').style.display='block';
-		document.getElementById('divImpCompMaq').style.display="none";
-		document.getElementById('divConversionMaq').style.display="none";
-	}//Fin llamaInventario
+  	});
+	ocultaDivs('PRODUCCION > Generar Codigo de Barras', 'crearCB');
+}//Fin llamaInventario
 
 
 
@@ -2601,45 +2216,19 @@ var url="../STOCK/GenerarCodigoBarra.php";
 }
 function ReporteDevolucionMat(){var area='Produccion';
 	if(document.getElementById('ReporteDevolucionesdiv').innerHTML == ''){
-$.ajax({
-   url: '../Vistas/Reporte Devoluciones/reporteDevoluciones.php',
-   type: 'POST',
-   async: true,
-   data: 'areax='+area,
-   dataType: "text",
-   success: function Respuesta(result){
-   document.getElementById("ReporteDevolucionesdiv").innerHTML = result;
-   },
-   error: Error
-   });
- }
- document.getElementById('ReporteDevolucionesdiv').style.display="block";
- document.getElementById("reportePedidosATdiv").style.display='none';
-		document.getElementById('maquinasDiv').style.display='none';
-		document.getElementById('cContrasenaDiv').style.display='none';
- 	 	document.getElementById('reporteMaquinasDiv').style.display='none';
-	 	document.getElementById('solPedidosDiv').style.display='none';
-		document.getElementById('reporteDeMaquinasDiv').style.display='none';
-		document.getElementById('entradasProDiv').style.display='none';
-		document.getElementById('inventarioProDiv').style.display='none';
-		document.getElementById('ordenServicioDiv').style.display='none';
-		document.getElementById('divReporteOS').style.display='none';
-		document.getElementById('pedidoNuevoDiv').style.display='none';
-		document.getElementById('divMaquinasBodegas').style.display="none";
-        document.getElementById('inventarioDiv').style.display="none";
-		document.getElementById('devolucionesMdiv').style.display='none';
-		document.getElementById('crearCB').style.display='none';
-		document.getElementById('divReporteContratos').style.display='none';
-		document.getElementById('divMaquinasPlacas').style.display="none";
-		document.getElementById('divReportedePlacas').style.display="none";
-		document.getElementById('maqIncompletasDiv').style.display='none';
-		document.getElementById('GenCB').style.display="none";
-	document.getElementById('filtraInvCod').style.display="none";
-	document.getElementById('divRelacionComSerieDos').style.display='none';
-	document.getElementById('divReporteComponete').style.display="none";
-	document.getElementById('divImpCompMaq').style.display="none";
-	document.getElementById('divConversionMaq').style.display="none";
-	document.getElementById('dir').innerHTML='PRODUCCION > Reporte Devoluciones';
+		$.ajax({
+		   url: '../Vistas/Reporte Devoluciones/reporteDevoluciones.php',
+		   type: 'POST',
+		   async: true,
+		   data: 'areax='+area,
+		   dataType: "text",
+		   success: function Respuesta(result){
+		   	document.getElementById("ReporteDevolucionesdiv").innerHTML = result;
+		   },
+		   error: Error
+		});
+	}
+	ocultaDivs('PRODUCCION > Reporte Devoluciones', 'ReporteDevolucionesdiv');
 }
 function busquedaDevolucionMat(Fini,Ffin,dev,area,clave,tecnico){
 	$.ajax({
@@ -2686,45 +2275,20 @@ function detalledevMat(devolucion){
 	window.open("../Vistas/Reporte Devoluciones/detalleDevMat.php?devolucionx="+devolucion+"&usuarioIDx="+usuarioID,"Detalle","width=1100,height=500,top=0,left=50,scrollbars=YES");
 }
 function reporteCNuevos(){
-$.ajax({
-   url: '../GTE_CUENTA/php/reporteContratos.php',
-   type: 'POST',
-   async: true,
-   data: '',
-   dataType: "text",
-   success: function Respuesta(result){
-   document.getElementById("divReporteContratos").innerHTML = result;
-   ocultaDiv(272);
-   ocultaDiv(273);
-   },
-   error: Error
- });
- document.getElementById('divReporteContratos').style.display='block';
- document.getElementById("reportePedidosATdiv").style.display='none';
-		document.getElementById('maquinasDiv').style.display='none';
-		document.getElementById('cContrasenaDiv').style.display='none';
- 	 	document.getElementById('reporteMaquinasDiv').style.display='none';
-	 	document.getElementById('solPedidosDiv').style.display='none';
-		document.getElementById('reporteDeMaquinasDiv').style.display='none';
-		document.getElementById('entradasProDiv').style.display='none';
-		document.getElementById('inventarioProDiv').style.display='none';
-		document.getElementById('ordenServicioDiv').style.display='none';
-		document.getElementById('divReporteOS').style.display='none';
-		document.getElementById('pedidoNuevoDiv').style.display='none';
-		document.getElementById('divMaquinasBodegas').style.display="none";
-        document.getElementById('inventarioDiv').style.display="none";
-		document.getElementById('devolucionesMdiv').style.display='none';
-		document.getElementById('crearCB').style.display='none';
-		document.getElementById('divMaquinasPlacas').style.display="none";
-		document.getElementById('divReportedePlacas').style.display="none";
-		document.getElementById('maqIncompletasDiv').style.display='none';
-		document.getElementById('GenCB').style.display="none";
-	document.getElementById('filtraInvCod').style.display="none";
-	document.getElementById('divRelacionComSerieDos').style.display='none';
-	document.getElementById('divReporteComponete').style.display="none";
-	document.getElementById('divImpCompMaq').style.display="none";
-	document.getElementById('divConversionMaq').style.display="none";
-document.getElementById('dir').innerHTML='PRODUCCION > Reportes > Reporte Contratos';
+	$.ajax({
+	   url: '../GTE_CUENTA/php/reporteContratos.php',
+	   type: 'POST',
+	   async: true,
+	   data: '',
+	   dataType: "text",
+	   success: function Respuesta(result){
+		   document.getElementById("divReporteContratos").innerHTML = result;
+		   ocultaDiv(272);
+		   ocultaDiv(273);
+	   },
+	   error: Error
+	});
+	ocultaDivs('PRODUCCION > Reportes > Reporte Contratos', 'divReporteContratos');
 }
 function busquedaReporteContratos(contratoID,txtFHRCalendario272,txtFHRCalendario273,salaid,selectUsuarioCN){
 	//alert(contratoID+" - "+txtFHRCalendario272+" - "+txtFHRCalendario273+" - "+salaid+" - "+selectUsuarioCN);
@@ -2820,37 +2384,13 @@ function buscaPlacas(){
   async: true,
   data: 'paisIDx='+paisID,
   success: function respuesta(result){
-	    document.getElementById('divMaquinasPlacas').innerHTML=result;
-	    document.getElementById('divMaquinasPlacas').style.display="block";
-	    document.getElementById("reportePedidosATdiv").style.display='none';
-		document.getElementById('maquinasDiv').style.display='none';
-		document.getElementById('cContrasenaDiv').style.display='none';
- 	 	document.getElementById('reporteMaquinasDiv').style.display='none';
-	 	document.getElementById('solPedidosDiv').style.display='none';
-		document.getElementById('reporteDeMaquinasDiv').style.display='none';
-		document.getElementById('entradasProDiv').style.display='none';
-		document.getElementById('inventarioProDiv').style.display='none';
-		document.getElementById('ordenServicioDiv').style.display='none';
-		document.getElementById('divReporteOS').style.display='none';
-		document.getElementById('pedidoNuevoDiv').style.display='none';
-		document.getElementById('divMaquinasBodegas').style.display="none";
-        document.getElementById('inventarioDiv').style.display="none";
-		document.getElementById('devolucionesMdiv').style.display='none';
-		document.getElementById('ReporteDevolucionesdiv').style.display="none";
-		document.getElementById('divReporteContratos').style.display='none';
-		document.getElementById('divReportedePlacas').style.display="none";
-		document.getElementById('maqIncompletasDiv').style.display='none';
-		document.getElementById('GenCB').style.display="none";
-	document.getElementById('filtraInvCod').style.display="none";
-	document.getElementById('divRelacionComSerieDos').style.display='none';
-	document.getElementById('divReporteComponete').style.display="none";
-	document.getElementById('divImpCompMaq').style.display="none";
-	document.getElementById('divConversionMaq').style.display="none";
-		document.getElementById('dir').innerHTML='PRODUCCION > Maquinas y Placas';
-	   },
+  	ocultaDivs('PRODUCCION > Maquinas y Placas', 'divMaquinasPlacas');
+	document.getElementById('divMaquinasPlacas').innerHTML=result;
+	},
   error: Error
  });
 }
+
 function busquedaMaquinasyPlacas(bodega,rack,nivel,numeroPlaca,n){//alert(bodega+" "+rack+" "+nivel+"-"+numeroPlaca);
 var paisID=1;
   $.ajax({
@@ -2885,34 +2425,9 @@ function reportePlacas(){
   async: true,
   data: 'paisIDx='+paisID,
   success: function respuesta(result){
-	    document.getElementById('divReportedePlacas').innerHTML=result;
-	    document.getElementById('divReportedePlacas').style.display="block";
-		document.getElementById('divMaquinasPlacas').style.display="none";
-	    document.getElementById("reportePedidosATdiv").style.display='none';
-		document.getElementById('maquinasDiv').style.display='none';
-		document.getElementById('cContrasenaDiv').style.display='none';
- 	 	document.getElementById('reporteMaquinasDiv').style.display='none';
-	 	document.getElementById('solPedidosDiv').style.display='none';
-		document.getElementById('reporteDeMaquinasDiv').style.display='none';
-		document.getElementById('entradasProDiv').style.display='none';
-		document.getElementById('inventarioProDiv').style.display='none';
-		document.getElementById('ordenServicioDiv').style.display='none';
-		document.getElementById('divReporteOS').style.display='none';
-		document.getElementById('pedidoNuevoDiv').style.display='none';
-		document.getElementById('divMaquinasBodegas').style.display="none";
-        document.getElementById('inventarioDiv').style.display="none";
-		document.getElementById('devolucionesMdiv').style.display='none';
-		document.getElementById('ReporteDevolucionesdiv').style.display="none";
-		document.getElementById('divReporteContratos').style.display='none';
-		document.getElementById('maqIncompletasDiv').style.display='none';
-		document.getElementById('GenCB').style.display="none";
-	document.getElementById('filtraInvCod').style.display="none";
-	document.getElementById('divRelacionComSerieDos').style.display='none';
-	document.getElementById('divReporteComponete').style.display="none";
-	document.getElementById('divImpCompMaq').style.display="none";
-	document.getElementById('divConversionMaq').style.display="none";
-		document.getElementById('dir').innerHTML='PRODUCCION > Reporte de Placas';
-	   },
+  	ocultaDivs('PRODUCCION > Reporte de Placas', 'divReportedePlacas');
+	document.getElementById('divReportedePlacas').innerHTML=result;
+  },
   error: Error
  });
 }
@@ -2955,45 +2470,21 @@ function imprimeCodQR(id,serie,modelo,mueble,ordenid){//alert(modelo);
 }
 //muestra lista de maquinas incompletas
 function maqIncomp(){//alert('hi');
-if(document.getElementById('maqIncompletasDiv').innerHTML==''){
-$.ajax({
-   url: 'php/listaMaqIncomp.php',
-   type: 'POST',
-   async: true,
-   data: '',
-   dataType: "text",
-   success: function Respuesta(result){//alert(result);
-   		document.getElementById('maqIncompletasDiv').innerHTML=result;
-		abrirListaMaqIncomp();
-   },
-   error: Error
-   });}
-   		document.getElementById('reporteMaquinasDiv').style.display='none';
-		document.getElementById('cContrasenaDiv').style.display='none';
-		document.getElementById('maqIncompletasDiv').style.display='block';
-		document.getElementById('solPedidosDiv').style.display='none';
-		document.getElementById('reporteDeMaquinasDiv').style.display='none';
-		document.getElementById('entradasProDiv').style.display='none';
-		document.getElementById('inventarioProDiv').style.display='none';
-		document.getElementById('ordenServicioDiv').style.display='none';
-		document.getElementById('divReporteOS').style.display='none';
-		document.getElementById('pedidoNuevoDiv').style.display='none';
-		document.getElementById('inventarioDiv').style.display="none";
-		document.getElementById('divMaquinasBodegas').style.display="none";
-		document.getElementById("reportePedidosATdiv").style.display='none';
-		document.getElementById('devolucionesMdiv').style.display='none';
-		document.getElementById('crearCB').style.display='none';
-		document.getElementById('ReporteDevolucionesdiv').style.display="none";
-		document.getElementById('divReporteContratos').style.display='none';
-		document.getElementById('divMaquinasPlacas').style.display="none";
-		document.getElementById('divReportedePlacas').style.display="none";
-		document.getElementById('GenCB').style.display="none";
-	document.getElementById('filtraInvCod').style.display="none";
-	document.getElementById('divRelacionComSerieDos').style.display='none';
-	document.getElementById('divReporteComponete').style.display="none";
-	document.getElementById('divImpCompMaq').style.display="none";
-	document.getElementById('divConversionMaq').style.display="none";
-		document.getElementById('dir').innerHTML='PRODUCCION > Solicitudes de Pedidos';
+	if(document.getElementById('maqIncompletasDiv').innerHTML==''){
+		$.ajax({
+		   url: 'php/listaMaqIncomp.php',
+		   type: 'POST',
+		   async: true,
+		   data: '',
+		   dataType: "text",
+		   success: function Respuesta(result){//alert(result);
+		   		document.getElementById('maqIncompletasDiv').innerHTML=result;
+				abrirListaMaqIncomp();
+		   },
+		   error: Error
+	   });
+	}
+	ocultaDivs('PRODUCCION > Solicitudes de Pedidos', 'maqIncompletasDiv');
 }
 function abrirListaMaqIncomp(){
     $.ajax({
@@ -3333,7 +2824,7 @@ if(result=='Repetido'){alert("No se pueden ingresar piezas con la misma serie");
 }
 /*------------------------ INICIO relacion componente------------------*/
 function RelSerieComDos(){
-		$.ajax({
+	$.ajax({
 	  url: '../STOCK/nuevoBuscaQRCom.php',
 	  type: 'POST',
 	  async: true,
@@ -3341,37 +2832,10 @@ function RelSerieComDos(){
 	  dataType: "text",
 	  success: function Respuesta(result){
 		  document.getElementById('divRelacionComSerieDos').innerHTML = result;
-	 ;},
+	  },
 	  error: Error
-  });
-	document.getElementById('divRelacionComSerieDos').style.display='block';
-	
-	document.getElementById('reporteMaquinasDiv').style.display='none';
-		document.getElementById('cContrasenaDiv').style.display='none';
-		document.getElementById('maqIncompletasDiv').style.display='block';
-		document.getElementById('solPedidosDiv').style.display='none';
-		document.getElementById('reporteDeMaquinasDiv').style.display='none';
-		document.getElementById('entradasProDiv').style.display='none';
-		document.getElementById('inventarioProDiv').style.display='none';
-		document.getElementById('ordenServicioDiv').style.display='none';
-		document.getElementById('divReporteOS').style.display='none';
-		document.getElementById('pedidoNuevoDiv').style.display='none';
-		document.getElementById('inventarioDiv').style.display="none";
-		document.getElementById('divMaquinasBodegas').style.display="none";
-		document.getElementById("reportePedidosATdiv").style.display='none';
-		document.getElementById('devolucionesMdiv').style.display='none';
-		document.getElementById('crearCB').style.display='none';
-		document.getElementById('ReporteDevolucionesdiv').style.display="none";
-		document.getElementById('divReporteContratos').style.display='none';
-		document.getElementById('divMaquinasPlacas').style.display="none";
-		document.getElementById('divReportedePlacas').style.display="none";
-		document.getElementById('GenCB').style.display="none";
-	document.getElementById('filtraInvCod').style.display="none";
-	document.getElementById('divReporteComponete').style.display="none";
-	document.getElementById('divImpCompMaq').style.display="none";
-	document.getElementById('divConversionMaq').style.display="none";
-	document.getElementById('dir').innerHTML='PRODUCCION > Relacionar Serie a Componente';
-	
+  	});
+	ocultaDivs('PRODUCCION > Relacionar Serie a Componente', 'divRelacionComSerieDos, #maqIncompletasDiv');
 }
 function AntesBuscarQRComDos(key,valor){//alert(key+" - "+valor);
 if(key.keyCode==13){  if(valor!=""){ traeDatosComDos(valor);}
@@ -3505,44 +2969,18 @@ function desasociaQR(idCodaQuitar,codigoQRPrin){//alert(idCodaQuitar+"-"+codigoQ
 /*----------------------- FIN relación componente---------------------------*/
 /*----------------------- INICIO relacion de componentes ----------------------*/
 function RComponente(){
-	document.getElementById('divReporteComponete').style.display="block";
-	document.getElementById('reporteMaquinasDiv').style.display='none';
-		document.getElementById('cContrasenaDiv').style.display='none';
-		document.getElementById('maqIncompletasDiv').style.display='block';
-		document.getElementById('solPedidosDiv').style.display='none';
-		document.getElementById('reporteDeMaquinasDiv').style.display='none';
-		document.getElementById('entradasProDiv').style.display='none';
-		document.getElementById('inventarioProDiv').style.display='none';
-		document.getElementById('ordenServicioDiv').style.display='none';
-		document.getElementById('divReporteOS').style.display='none';
-		document.getElementById('pedidoNuevoDiv').style.display='none';
-		document.getElementById('inventarioDiv').style.display="none";
-		document.getElementById('divMaquinasBodegas').style.display="none";
-		document.getElementById("reportePedidosATdiv").style.display='none';
-		document.getElementById('devolucionesMdiv').style.display='none';
-		document.getElementById('crearCB').style.display='none';
-		document.getElementById('ReporteDevolucionesdiv').style.display="none";
-		document.getElementById('divReporteContratos').style.display='none';
-		document.getElementById('divMaquinasPlacas').style.display="none";
-		document.getElementById('divReportedePlacas').style.display="none";
-		document.getElementById('GenCB').style.display="none";
-	document.getElementById('filtraInvCod').style.display="none";
-	document.getElementById('divImpCompMaq').style.display="none";
-	document.getElementById('divConversionMaq').style.display="none";
-	document.getElementById('dir').innerHTML='PRODUCCION > Relacion componentes';
-	
-	//alert("e");
-	//document.getElementById('spanRegionSala').style.display="none";
-	
+	ocultaDivs('PRODUCCION > Relacion componentes', 'divReporteComponete');
+
 	$.ajax({
 	  url: '../ImpresionEtiquetas/php/reporteRelComponente.php',
 	  type: 'POST',
 	  async: true,
 	  data: '',
 	  dataType: "text",
-	  success: function Respuesta(result){document.getElementById('divReporteComponete').innerHTML = result;
-	  document.getElementById('spanRegionSala').style.display="none";
-	 ;},
+	  success: function Respuesta(result){
+	  	document.getElementById('divReporteComponete').innerHTML = result;
+	  	//document.getElementById('spanRegionSala').style.display="none";
+	  },
 	  error: Error
   });
 }
@@ -3598,74 +3036,24 @@ function impCompSinRel(){
 	  async: true,
 	  data: 'valorx='+valor,
 	  dataType: "text",
-	  success: function Respuesta(result){document.getElementById('divImpCompMaq').innerHTML = result;
-
+	  success: function Respuesta(result){
+	  	document.getElementById('divImpCompMaq').innerHTML = result;
 		 //document.getElementById('inputCodComponenteRM').value="";
-	 },
+	  },
 	  error: Error
-  });
-   document.getElementById('divImpCompMaq').style.display="block";
-  document.getElementById('divReporteComponete').style.display="none";
-	document.getElementById('reporteMaquinasDiv').style.display='none';
-		document.getElementById('cContrasenaDiv').style.display='none';
-		document.getElementById('maqIncompletasDiv').style.display='none';
-		document.getElementById('solPedidosDiv').style.display='none';
-		document.getElementById('reporteDeMaquinasDiv').style.display='none';
-		document.getElementById('entradasProDiv').style.display='none';
-		document.getElementById('inventarioProDiv').style.display='none';
-		document.getElementById('ordenServicioDiv').style.display='none';
-		document.getElementById('divReporteOS').style.display='none';
-		document.getElementById('pedidoNuevoDiv').style.display='none';
-		document.getElementById('inventarioDiv').style.display="none";
-		document.getElementById('divMaquinasBodegas').style.display="none";
-		document.getElementById("reportePedidosATdiv").style.display='none';
-		document.getElementById('devolucionesMdiv').style.display='none';
-		document.getElementById('crearCB').style.display='none';
-		document.getElementById('ReporteDevolucionesdiv').style.display="none";
-		document.getElementById('divReporteContratos').style.display='none';
-		document.getElementById('divMaquinasPlacas').style.display="none";
-		document.getElementById('divReportedePlacas').style.display="none";
-		document.getElementById('GenCB').style.display="none";
-	document.getElementById('filtraInvCod').style.display="none";
-	document.getElementById('divConversionMaq').style.display="none";
-	document.getElementById('dir').innerHTML='PRODUCCION > Impresion de componentes de máquina';
-	}
-	function impComMaqSinVincular(serie){
+  	});
+	ocultaDivs('PRODUCCION > Impresion de componentes de máquina', 'divImpCompMaq');
+}
+function impComMaqSinVincular(serie){
 		//if(modelo!="Bryke2" && modelo!="Blackplus1" && modelo!="FUSIONSL1" && modelo!="FUSIONUP1" && modelo!="D2BLACK1" && modelo!="D2BLACK3" && modelo!="D2BLUEW1" && modelo!="SZ8002" && modelo!="ZF4000" && modelo!="CD 001 PLUS" && modelo!="FUSION-AL1" && modelo!="FUSION-IL1" && modelo!="LUX1" && modelo!="Brk1" && modelo!="ALTIUS"  && modelo!="ILLUSION" && modelo!="ALLURE" && modelo!="FUSION"){alert("Solo modelos Bryke2, Blackplus1, FUSIONSL1, FUSIONUP1, SZ8002, ZF4000, Altius y Fusion"); return -1; }
 	window.open("../ImpresionEtiquetas/php/impresionCodigosQR.php?serieMaqx="+serie+"&usuarioIDx="+usuarioID,"SALIDA","width=1000,height=600,top=50,left=50,scrollbars=YES");
 //	
 	//	window.open("../ImpresionEtiquetas/php/impresionComMaqSinVincular.php?serieMaqx="+serie+"&usuarioIDx="+usuarioID,"SALIDA","width=1000,height=600,top=50,left=50,scrollbars=YES");
-	}
+}
 /*----------------------- FIN imp de componentes sin relaxionar-------------------------*/
 //////////////////////////////////////////conversion de maquinas
 function conversionMaq(){
-	document.getElementById('maquinasDiv').style.display='none';
-		document.getElementById('cContrasenaDiv').style.display='none';
- 	 	document.getElementById('reporteMaquinasDiv').style.display='none';
-	 	document.getElementById('solPedidosDiv').style.display='none';
-		document.getElementById('reporteDeMaquinasDiv').style.display='none';
-		document.getElementById('entradasProDiv').style.display='none';
-		document.getElementById('inventarioProDiv').style.display='none';
-		document.getElementById('ordenServicioDiv').style.display='none';
-		document.getElementById('divReporteOS').style.display='none';
-		document.getElementById('pedidoNuevoDiv').style.display='none';
-		document.getElementById('divMaquinasBodegas').style.display="none";
-        document.getElementById('inventarioDiv').style.display="none";
-		document.getElementById("reportePedidosATdiv").style.display='none';
-		document.getElementById('devolucionesMdiv').style.display='none';
-		document.getElementById('crearCB').style.display='none';
-		document.getElementById('divReporteContratos').style.display='none';
-		document.getElementById('divMaquinasPlacas').style.display="none";
-		document.getElementById('divReportedePlacas').style.display="none";
-		document.getElementById('maqIncompletasDiv').style.display='none';
-		document.getElementById('ReporteDevolucionesdiv').style.display="none";
-		document.getElementById('GenCB').style.display="none";
-	document.getElementById('filtraInvCod').style.display="none";
-	document.getElementById('divRelacionComSerieDos').style.display='none';
-	document.getElementById('divReporteComponete').style.display="none";
-	document.getElementById('divImpCompMaq').style.display="none";
-		document.getElementById('dir').innerHTML='PRODUCCION > Conversion de Maquinas';
-		document.getElementById('divConversionMaq').style.display='block';
+	ocultaDivs('PRODUCCION > Conversion de Maquinas', 'divConversionMaq');	
 }
 function traeDatosLicenciaConv(n,licencia){//alert(n);
 	$.ajax({ 
@@ -3741,6 +3129,14 @@ function convertirMaquinaOS(n,tipo,cadena){alert("entra a 2 OS "+n);
    },
    error: Error
    });
+}
+
+function ocultaDivs($titulo, $mostrar){
+	console.log("ocultaDivs:" + $titulo + ", mostrar " + $mostrar);
+	$('.contDiv').hide();
+	console.log("div ocultos")
+	$('#' + $mostrar).show();
+	$('#dir').html($titulo);	 
 }
 /////////////////////////////////////////fin conversion de maquinas
 /*function CodigoBarras(){

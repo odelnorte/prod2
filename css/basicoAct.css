@@ -1,7 +1,12 @@
-#contenedor {   z-index:1;
-          width:auto;
-		  height:100%;
-	      margin:5px 10px 5px 10px;
+BODY{
+  padding: 0px;
+  margin: 0px;
+}
+#contenedor {   
+  z-index:1;
+  width:auto;
+	height:100%;
+	margin:0px;
 		  /*position:absolute;*/
 		  /*background-color: #33f;
 height: 100%!important;
